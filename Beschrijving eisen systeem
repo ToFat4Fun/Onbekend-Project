@@ -1,0 +1,20 @@
+must have
+-	Een speelveld in een vierkant vlak
+-	Speler die kan lopen naar het eindveld
+-	Muren
+-	Barricades
+-	Barricades kan je openen met passende sleutel
+-	Speler moet eerst sleutel pakken
+-	Sleutel kan je meerdere keren gebruiken
+-	Je kan één sleutel in je zak hebben
+-	Als speler een sleutel pakt, verdwijnt het uit het veld. Sleutel zit dan in je zak
+-	De sleutel zit dan in je zak
+-	Je krijgt een melding als een sleutel niet past
+-	De barricade verdwijnt als de sleutel wel past
+-	Speler wordt verplaatst d.m.v. pijltjestoetsen
+-	Halverwege spel moet het mogelijk zijn hetzelfde speelveld opnieuw te starten
+-	Er moeten uitbreidingen aan het kunnen worden toegevoegd
+-	Pop up scherm wanneer speler succesvol is begeleid naar het eindpunt
+could have
+should have 
+wont have
