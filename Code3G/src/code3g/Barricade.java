@@ -9,7 +9,7 @@ package code3g;
  *
  * @author jurian
  */
-public class Barricade extends Eigenschap {
+public class Barricade extends Eigenschap implements Melding {
     
     private int bariccadeNummer;
     
