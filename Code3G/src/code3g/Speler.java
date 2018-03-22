@@ -10,15 +10,20 @@ package code3g;
  * @author Ta
  */
 public class Speler {
-  private int xC;
- private int yC;
- private int zak;
+    
+    
+    private int xC;
+    private int yC;
+    private int zak;
+    
+    //constructor
     public Speler(int xC, int yC, int zak) {
         this.xC = xC;
         this.yC = yC;
         this.zak = zak;
     }
 
+    
      public int getxC() {
         return xC;
     }
@@ -27,6 +32,7 @@ public class Speler {
         this.xC = xC;
     }
 
+    
     public int getyC() {
         return yC;
     }
@@ -35,6 +41,7 @@ public class Speler {
         this.yC = yC;
     }
 
+    
     public int getZak() {
         return zak;
     }
@@ -43,6 +50,8 @@ public class Speler {
         this.zak = zak;
     }
     
+    
+    //methods for moving the Speler..
     public void moveRight() {
     }
 
