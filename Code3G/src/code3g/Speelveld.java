@@ -114,4 +114,8 @@ public class Speelveld extends JFrame {
         //pathX = X; // pas de positie speler aan
         //pathY = Y;// pas de positie speler aan
     }
+    
+    public void Start(){}
+    public void Restart(){}
+    public void End(){}
 }
