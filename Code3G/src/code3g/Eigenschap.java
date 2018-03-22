@@ -13,7 +13,7 @@ public class Eigenschap {
     
     private boolean beloopbaar;
     private String afbeelding;
-    private vakSoort vakSoort;
+    private final vakSoort vakSoort;
     private int xC;
     private int yC;
     
