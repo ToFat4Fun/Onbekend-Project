@@ -14,7 +14,7 @@ public class Vak {
     
     public Vak(String gekozenKleur) // verwacht een hexCode kleur
     {
-        this.kleur = kleur;
+        this.kleur = gekozenKleur;
     }
     
     public void setKleur(String gekozenKleur)

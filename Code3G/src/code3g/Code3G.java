@@ -18,6 +18,7 @@ public class Code3G {
         // TODO code application logic here
         
         //test
+        Speelveld speelveld = new Speelveld();
     }
     
 }
