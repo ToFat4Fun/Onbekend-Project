@@ -1,0 +1,33 @@
+ */
+package doolhofgame;
+
+import java.awt.Color;
+import javax.swing.*;
+import java.awt.image.BufferedImage;
+import java.awt.Graphics;
+import javax.imageio.ImageIO;
+
+/**
+ *
+ * @author onbekend project 
+ */
+public class Hoofdpanel extends JPanel {
+    
+    BufferedImage image;
+    
+    public Hoofdpanel(){
+        setBackground(Color.CYAN);
+        
+        try{
+        image = ImageIO.read(Hoofdpanel.class.getResourceAsStream("image.png"));
+    }catch(Exception e){
+        e.printStackTrace();
+    }
+    }
+    
+    public void paint(Graphics g){
+        g.drawImage(image, 100,100,this);
+    }
+    
+}
+//met deze code maak je een JPanel waar op een image wordt afgebeeld/paint
