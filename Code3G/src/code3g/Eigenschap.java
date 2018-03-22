@@ -21,7 +21,6 @@ public class Eigenschap {
     
    
     //constructor
-    //TODO: aanmaken afbeelding en vakSoort
     public Eigenschap(boolean beloopbaar, String afbeelding, vakSoort vakSoort, int xC, int yC){
         this.beloopbaar = beloopbaar;
         this.afbeelding = afbeelding;
