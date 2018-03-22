@@ -29,8 +29,6 @@ public class Sleutel extends Eigenschap {
     }
     
     
-    
-    
     //when Speler picks up key, key is added to Speler Zak and key destroys itself
     public void vernietigtZichzelf(Speler speler)
     {
