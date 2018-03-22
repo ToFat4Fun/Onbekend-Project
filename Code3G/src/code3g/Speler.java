@@ -10,5 +10,49 @@ package code3g;
  * @author Ta
  */
 public class Speler {
+  private int xC;
+ private int yC;
+ private int zak;
+    public Speler(int xC, int yC, int zak) {
+        this.xC = xC;
+        this.yC = yC;
+        this.zak = zak;
+    }
+
+     public int getxC() {
+        return xC;
+    }
+
+    public void setxC(int xC) {
+        this.xC = xC;
+    }
+
+    public int getyC() {
+        return yC;
+    }
+
+    public void setyC(int yC) {
+        this.yC = yC;
+    }
+
+    public int getZak() {
+        return zak;
+    }
     
-}
+    public void setZak(int zak) {
+        this.zak = zak;
+    }
+    
+    public void moveRight() {
+    }
+
+    public void moveLeft() {
+    }
+
+    public void moveUp() {
+    }
+
+    public void moveDown() {
+    }
+}   
+
