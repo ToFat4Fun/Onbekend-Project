@@ -14,8 +14,8 @@ public class Sleutel extends Eigenschap {
     private int sleutelNummer;
     
     //constructor
-    public Sleutel(boolean beloopbaar, String afbeelding, String vakSoort, int xC, int yC, int sleutelNummer) {
-        super(beloopbaar, afbeelding, vakSoort, xC, yC);
+    public Sleutel(boolean beloopbaar, String bestandsNaam, String vakSoort, int xC, int yC, int sleutelNummer) {
+        super(beloopbaar, bestandsNaam, xC, yC);
     }
 
     
@@ -35,4 +35,6 @@ public class Sleutel extends Eigenschap {
         
     }
     
+    //methode die vakSoort moet vervangen..
+    public  void vakEigenschappen(){}
 }
