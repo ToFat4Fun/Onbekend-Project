@@ -17,7 +17,7 @@ public class Muur extends Eigenschap {
     
     
     //methode die vakSoort moet vervangen..
-    public  void vakEigenschappen(){}
+    public  void vakEigenschap(){}
     
     //review this later..
     

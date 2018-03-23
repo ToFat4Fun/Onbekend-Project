@@ -16,7 +16,7 @@ public class Eindbestemming extends Eigenschap implements Melding {
     }
     
     //methode die vakSoort moet vervangen..
-    public  void vakEigenschappen(){}
+    public  void vakEigenschap(){}
     
     
     //insert something that happens when Speler steps on eindbestemming..
