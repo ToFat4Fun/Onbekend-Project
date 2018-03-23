@@ -12,8 +12,7 @@ package code3g;
 public class Eigenschap {
     
     private boolean beloopbaar;
-    private String afbeelding;
-    private final vakSoort vakSoort;
+    private String bestandsNaam;
     private int xC;
     private int yC;
     
@@ -21,15 +20,18 @@ public class Eigenschap {
     
    
     //constructor
-    public Eigenschap(boolean beloopbaar, String afbeelding, vakSoort vakSoort, int xC, int yC){
+    public Eigenschap(boolean beloopbaar, String bestandsNaam, int xC, int yC){
         this.beloopbaar = beloopbaar;
-        this.afbeelding = afbeelding;
-        this.vakSoort = vakSoort;
+        this.bestandsNaam = bestandsNaam;
         this.xC = xC;
         this.yC = yC;
     }
     
     
+    //methode die vakSoort moet vervangen..
+    public  void vakEigenschappen(){}
+            
+            
     //get/set for beloopbaar
     public boolean getBeloopbaar() {
         return beloopbaar;
@@ -41,18 +43,11 @@ public class Eigenschap {
     
     //get/set for Afbeelding
     public String getAfbeelding() {
-        return afbeelding;
+        return bestandsNaam;
     }
 
-    public void setAfbeelding(String afbeelding) {
-        this.afbeelding = afbeelding;
-    }
-
-    
-
-    //get for vakSoort
-    public vakSoort getVakSoort() {
-        return vakSoort;
+    public void setBestandsNaam(String bestandsNaam) {
+        this.bestandsNaam = bestandsNaam;
     }
 
     
@@ -74,8 +69,6 @@ public class Eigenschap {
     public void setyC(int inputYC) {
         this.yC = yC;
     }
-    
-    
     
     
     

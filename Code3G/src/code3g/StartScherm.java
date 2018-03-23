@@ -9,7 +9,8 @@ package code3g;
  *
  * @author jurian
  */
-public interface Melding {
+public class StartScherm {
     
-    //code here hier moet toch joptionpane pop-up?
+    
+    
 }

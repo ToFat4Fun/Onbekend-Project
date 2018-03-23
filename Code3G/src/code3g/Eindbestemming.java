@@ -11,9 +11,12 @@ package code3g;
  */
 public class Eindbestemming extends Eigenschap implements Melding {
     
-    public Eindbestemming(boolean beloopbaar, String afbeelding, vakSoort vakSoort, int xC, int yC) {
-        super(beloopbaar, afbeelding, vakSoort, xC, yC);
+    public Eindbestemming(boolean beloopbaar, String bestandsNaam, String vakSoort, int xC, int yC) {
+        super(beloopbaar, bestandsNaam, xC, yC);
     }
+    
+    //methode die vakSoort moet vervangen..
+    public  void vakEigenschappen(){}
     
     
     //insert something that happens when Speler steps on eindbestemming..
