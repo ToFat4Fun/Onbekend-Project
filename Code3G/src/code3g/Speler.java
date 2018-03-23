@@ -23,10 +23,10 @@ public class Speler extends JFrame  {
     private int xC;
     private int yC;
     private int zak;
-    private Image up= new ImageIcon("move_up.png").getImage();
-    private Image left= new ImageIcon("move_left.png").getImage();
-    private Image right= new ImageIcon("move_right.png").getImage();
-    private Image down= new ImageIcon("move_down.png").getImage();
+    private final Image up= new ImageIcon("move_up.png").getImage();
+    private final Image left= new ImageIcon("move_left.png").getImage();
+    private final Image right= new ImageIcon("move_right.png").getImage();
+    private final Image down= new ImageIcon("move_down.png").getImage();
     
     
     //constructor
