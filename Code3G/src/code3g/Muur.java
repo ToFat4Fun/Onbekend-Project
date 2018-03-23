@@ -11,7 +11,7 @@ package code3g;
  */
 public class Muur extends Eigenschap {
     
-    public Muur(boolean beloopbaar, String afbeelding, vakSoort vakSoort, int xC, int yC) {
+    public Muur(boolean beloopbaar, String afbeelding, String vakSoort, int xC, int yC) {
         super(beloopbaar, afbeelding, vakSoort, xC, yC);
     }
     

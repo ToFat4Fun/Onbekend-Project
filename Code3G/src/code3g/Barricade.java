@@ -14,7 +14,7 @@ public class Barricade extends Eigenschap implements Melding {
     private int bariccadeNummer;
     
     //constructor
-    public Barricade(boolean beloopbaar, String afbeelding, vakSoort vakSoort, int xC, int yC, int barricadeNummer) {
+    public Barricade(boolean beloopbaar, String afbeelding, String vakSoort, int xC, int yC, int barricadeNummer) {
         super(beloopbaar, afbeelding, vakSoort, xC, yC);
     }
 

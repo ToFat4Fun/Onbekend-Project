@@ -11,7 +11,7 @@ package code3g;
  */
 public class Eindbestemming extends Eigenschap implements Melding {
     
-    public Eindbestemming(boolean beloopbaar, String afbeelding, vakSoort vakSoort, int xC, int yC) {
+    public Eindbestemming(boolean beloopbaar, String afbeelding, String vakSoort, int xC, int yC) {
         super(beloopbaar, afbeelding, vakSoort, xC, yC);
     }
     

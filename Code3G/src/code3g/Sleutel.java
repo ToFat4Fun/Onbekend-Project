@@ -14,7 +14,7 @@ public class Sleutel extends Eigenschap {
     private int sleutelNummer;
     
     //constructor
-    public Sleutel(boolean beloopbaar, String afbeelding, vakSoort vakSoort, int xC, int yC, int sleutelNummer) {
+    public Sleutel(boolean beloopbaar, String afbeelding, String vakSoort, int xC, int yC, int sleutelNummer) {
         super(beloopbaar, afbeelding, vakSoort, xC, yC);
     }
 
