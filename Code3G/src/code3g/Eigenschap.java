@@ -26,8 +26,7 @@ public class Eigenschap {
         this.xC = xC;
         this.yC = yC;
     }
-    
-    
+
     //methode die vakSoort moet vervangen..
     public  void vakEigenschap(){}
             

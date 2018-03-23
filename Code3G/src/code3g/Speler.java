@@ -17,10 +17,9 @@ public class Speler {
     private int zak;
     
     //constructor
-    public Speler(int xC, int yC, int zak) {
+    public Speler(int xC, int yC) {
         this.xC = xC;
         this.yC = yC;
-        this.zak = zak;
     }
 
     

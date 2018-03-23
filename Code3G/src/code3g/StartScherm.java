@@ -10,7 +10,16 @@ package code3g;
  * @author jurian
  */
 public class StartScherm {
-    
-    
+
+    private MoeilijkheidsGraad moeilijkheidsGraad; // moeilijkheidsgraad declareren
+
+    public enum MoeilijkheidsGraad {
+        makkelijk, normaal, moeilijk
+    } // moeilijkheidsGraad in enum datatype.
+
+    public StartScherm() {
+        moeilijkheidsGraad = MoeilijkheidsGraad.makkelijk;
+        System.out.println(moeilijkheidsGraad);
+    }
     
 }

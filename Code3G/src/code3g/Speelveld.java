@@ -20,10 +20,6 @@ public class Speelveld extends JFrame {
 
     private Vak[][] vak;// object vak declareren
 
-    private MoeilijkheidsGraad moeilijkheidsGraad; // moeilijkheidsgraad declareren
-             
-    public enum MoeilijkheidsGraad{makkelijk, normaal, moeilijk} // moeilijkheidsGraad in enum datatype.
-      
 
     @Override
     public void paint(Graphics g) {
@@ -52,9 +48,7 @@ public class Speelveld extends JFrame {
 
     public Speelveld() {
         vak = new Vak[10][10];
-        moeilijkheidsGraad = MoeilijkheidsGraad.makkelijk;
-        System.out.println(moeilijkheidsGraad);
-        
+       
         setTitle("Test");// naam van het scherm
         setSize(640, 480);// breedte en hoogte instellen
         setLocationRelativeTo(null);// zet in het midden van het scherm
@@ -110,12 +104,8 @@ public class Speelveld extends JFrame {
     }
     //voorspeler
 
-    public void changePosition(int Y, int X) {
-        //pathX = X; // pas de positie speler aan
-        //pathY = Y;// pas de positie speler aan
-    }
     
-    public void Start(){}
+     public void Start(){}
     public void Restart(){}
     public void End(){}
 }
