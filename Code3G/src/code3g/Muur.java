@@ -17,6 +17,7 @@ public class Muur extends Eigenschap {
     
     
     //methode die vakSoort moet vervangen..
+    @Override
     public  void vakEigenschap(){}
     
     //review this later..
