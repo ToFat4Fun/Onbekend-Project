@@ -11,5 +11,5 @@ package code3g;
  */
 public interface Melding {
     
-    //code here
+    //code here hier moet toch joptionpane pop-up?
 }
