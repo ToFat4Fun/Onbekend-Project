@@ -108,7 +108,7 @@ public class Speelveld extends JFrame {
                   }
             }
          */
-    }
+    
     //voorspeler
 
     public void changePosition(int Y, int X) {

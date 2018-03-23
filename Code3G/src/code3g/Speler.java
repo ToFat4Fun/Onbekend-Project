@@ -94,7 +94,8 @@ public class Speler extends JFrame  {
             default:
                 break;
         }
-
+        setxC(x);
+        setyC(y);
         repaint();
     }
     
