@@ -97,7 +97,7 @@ public class Speler extends JFrame  {
             default:
                 break;
         }
-        setxC(x);
+        setxC(x); //update x en y coordinaat van de speler
         setyC(y);
         repaint();
     }
