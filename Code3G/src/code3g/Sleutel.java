@@ -36,5 +36,5 @@ public class Sleutel extends Eigenschap {
     }
     
     //methode die vakSoort moet vervangen..
-    public  void vakEigenschappen(){}
+    public  void vakEigenschap(){}
 }
