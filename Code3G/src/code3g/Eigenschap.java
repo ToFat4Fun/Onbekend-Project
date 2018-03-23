@@ -29,7 +29,7 @@ public class Eigenschap {
     
     
     //methode die vakSoort moet vervangen..
-    public  void vakEigenschappen(){}
+    public  void vakEigenschap(){}
             
             
     //get/set for beloopbaar
