@@ -13,7 +13,7 @@ public class Eigenschap {
     
     private boolean beloopbaar;
     private String afbeelding;
-    private final vakSoort vakSoort;
+    private final String vakSoort;
     private int xC;
     private int yC;
     
@@ -21,7 +21,7 @@ public class Eigenschap {
     
    
     //constructor
-    public Eigenschap(boolean beloopbaar, String afbeelding, vakSoort vakSoort, int xC, int yC){
+    public Eigenschap(boolean beloopbaar, String afbeelding, String vakSoort, int xC, int yC){
         this.beloopbaar = beloopbaar;
         this.afbeelding = afbeelding;
         this.vakSoort = vakSoort;
@@ -51,7 +51,7 @@ public class Eigenschap {
     
 
     //get for vakSoort
-    public vakSoort getVakSoort() {
+    public String getVakSoort() {
         return vakSoort;
     }
 
