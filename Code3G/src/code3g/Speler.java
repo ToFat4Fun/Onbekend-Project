@@ -5,16 +5,29 @@
  */
 package code3g;
 
+
+import java.awt.event.KeyEvent;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import java.awt.Graphics;
 /**
  *
  * @author Ta
  */
-public class Speler {
+public class Speler extends JFrame  {
+
     
+    private Image huidigeAfbeelding;   
     
     private int xC;
     private int yC;
     private int zak;
+    private final Image up= new ImageIcon("move_up.png").getImage();
+    private final Image left= new ImageIcon("move_left.png").getImage();
+    private final Image right= new ImageIcon("move_right.png").getImage();
+    private final Image down= new ImageIcon("move_down.png").getImage();
+    
     
     //constructor
     public Speler(int xC, int yC) {
@@ -50,17 +63,51 @@ public class Speler {
     }
     
     
-    //methods for moving the Speler..
-    public void moveRight() {
-    }
 
-    public void moveLeft() {
-    }
+    
+    @Override
+    protected void processKeyEvent(KeyEvent e) // toetsenbord actie
+    {
+        if (e.getID() != KeyEvent.KEY_PRESSED) // als een actie van een knop niet gedrukt, dan gebeurt er niks
+        {
+            return;
+        }
 
-    public void moveUp() {
-    }
+        int x = 1;// locatie van huidige pathX
+        int y = 1; // locatie van huidige pathY
+        switch (e.getKeyCode()) { // haalt waarde van toetsenbord op
 
-    public void moveDown() {
+            case KeyEvent.VK_RIGHT: // als recht, dan eentje opzij
+                huidigeAfbeelding = right;
+                x += 1;
+                break;
+            case KeyEvent.VK_LEFT:
+                huidigeAfbeelding = left;
+                x -= 1;
+                break;
+            case KeyEvent.VK_DOWN:
+                huidigeAfbeelding = down;
+                y += 1;
+                break;
+            case KeyEvent.VK_UP: 
+                huidigeAfbeelding = up;
+                y -= 1;
+                break;
+            default:
+                break;
+        }
+        setxC(x); //update x en y coordinaat van de speler
+        setyC(y);
+        repaint();
+    }
+    
+    
+    
+    @Override
+    public void paint(Graphics g){
+        super.paint(g);
+        g.drawImage(huidigeAfbeelding, xC, yC, rootPane);
+        repaint();
     }
 }   
 

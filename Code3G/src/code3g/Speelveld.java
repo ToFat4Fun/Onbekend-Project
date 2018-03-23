@@ -56,7 +56,7 @@ public class Speelveld extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// zet scherm afsluiten als een standaard
         setVisible(true);//open het applicatie/scherm.
     }
-
+  /* //STAAT NU IN SPELER.JAVA
     @Override
     protected void processKeyEvent(KeyEvent e) // toetsenbord actie
     {
@@ -83,6 +83,7 @@ public class Speelveld extends JFrame {
             default:
                 break;
         }
+        */
         /*
             if(vak[y][x].getCoordinatesOfEigenschap == 1) // als de aangevende positie van vak een muur bevat, dan een  melding tonen.
             {
@@ -101,7 +102,7 @@ public class Speelveld extends JFrame {
                   }
             }
          */
-    }
+    
     //voorspeler
 
     
