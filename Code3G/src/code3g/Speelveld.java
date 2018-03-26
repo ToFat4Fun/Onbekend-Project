@@ -21,14 +21,13 @@ import javax.swing.Timer;
 //extends JComponent om de paar pixels te verfen. panel niet aan te raden.
 public class Speelveld extends JComponent implements ActionListener {
 
-    private Timer timer;// delay tijd aanmaken. bron: 
+    private Timer timer;// delay tijd voor ActionListener aanmaken. bron: https://stackoverflow.com/questions/22366890/java-timer-action-listener
     private Vak[][] vak;// object vak declareren
 
     private Speler speler;
 
     private final int ROW = 10;
     private final int COL = 10;
-
 
     public Speelveld() {
         vak = new Vak[10][10]; // heeft 100 vakken. 
@@ -40,6 +39,7 @@ public class Speelveld extends JComponent implements ActionListener {
         speler.setHuidigeAfbeeldingRechts();// standaard afbeelding
     }
 
+    @Override
     public void paint(Graphics g) {
         g.translate(100, 100); // geeft een positie van een aangemaakt paint
 
@@ -76,7 +76,8 @@ public class Speelveld extends JComponent implements ActionListener {
         repaint();
     }
 
-    //inner class creeren, omdat JPanel al als extends gebruikt.
+    //inner class creeren, omdat keyAdapter beter is dan interface KeyListener, omdat KeyPressed methode alleen nodig is.
+    //daardoor hoef je de andere methoden niet te implementeren.
     public class Toetsenbord extends KeyAdapter {
 
         //wanneer een toetsenbord gedrukt is, voert dit methode uit
@@ -120,14 +121,5 @@ public class Speelveld extends JComponent implements ActionListener {
             }
         }
 
-    }
-
-    public void Start() { 
-    }
-
-    public void Restart() {
-    }
-
-    public void End() {
     }
 }
