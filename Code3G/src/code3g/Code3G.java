@@ -6,23 +6,34 @@
 package code3g;
 
 import java.util.ArrayList;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
 
 /**
  *
  * @author mucis
  */
-public class Code3G {
+public class Code3G{
 
     /**
-     * @param args the command line arguments
+     * @param args the command line arguments even updaten
      */
     public static void main(String[] args) {
         // TODO code application logic here
         
         ArrayList<Eigenschap> eigenschappen = new ArrayList<Eigenschap>();
-
-        //test
+   
         Speelveld speelveld = new Speelveld();
+        JFrame f = new JFrame();
+        f.add(speelveld);
+        
+        f.setTitle("Test");// naam van het scherm
+        f.setSize(700, 700);// breedte en hoogte instellen
+        f.setLocationRelativeTo(null);// zet in het midden van het scherm
+        f.setResizable(false);// de grootte van het scherm niet wijzigen.
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// zet scherm afsluiten als een standaard
+        f.setVisible(true);//open het applicatie/scherm.
+        //test
         
         /*
         eigenschappen:
