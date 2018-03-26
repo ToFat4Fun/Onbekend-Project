@@ -7,17 +7,25 @@ package code3g;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 /**
  *
  * @author mucis
  */
-public class Speelveld extends JFrame {
+public class Speelveld extends JPanel implements ActionListener {
 
+    private Timer timer;
     private Vak[][] vak;// object vak declareren
 
     private Speler speler;
@@ -27,9 +35,7 @@ public class Speelveld extends JFrame {
     private final int COL = 10; 
 
 
-    @Override
     public void paint(Graphics g) {
-        super.paint(g);// paint constructeren
         g.translate(100, 100); // geeft een positie van een aangemaakt paint
 
         for (int row = 0; row < 10; row++)// for loop om alle vakken te tonen
@@ -48,7 +54,7 @@ public class Speelveld extends JFrame {
         }
         
         
-        g.drawImage(speler.getHuidigeAfbeelding(), speler.getxC() * 50, speler.getyC() * 50, 49, 49, rootPane);
+        g.drawImage(speler.getHuidigeAfbeelding(), speler.getxC() * 50, speler.getyC() * 50, 49, 49, this);
 
         //voor spelers:: binnenkort
         //g.setColor(Color.decode("#176b08")); // kleur van een speler
@@ -62,18 +68,53 @@ public class Speelveld extends JFrame {
     public Speelveld() {
         vak = new Vak[10][10];
         speler = new Speler(0,0);
+        addKeyListener(new Al());
+        setFocusable(true);
+        timer = new Timer(25,this);
+        timer.start();
+        
         speler.setHuidigeAfbeeldingRechts();
-        setTitle("Test");// naam van het scherm
-        setSize(700, 700);// breedte en hoogte instellen
-        setLocationRelativeTo(null);// zet in het midden van het scherm
-        setResizable(false);// de grootte van het scherm niet wijzigen.
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// zet scherm afsluiten als een standaard
-        setVisible(true);//open het applicatie/scherm.
     }
-
+/*
     @Override
     protected void processKeyEvent(KeyEvent e) // toetsenbord actie
     {
+       
+        repaint();
+        }
+    }*/
+        /*
+            if(vak[y][x].getCoordinatesOfEigenschap == 1) // als de aangevende positie van vak een muur bevat, dan een  melding tonen.
+            {
+                  System.out.println("Maze waarde is: "+ Vak[pathX][pathY]);
+                System.out.println("muur!");
+
+            }
+            else
+            {     changePosition(y,x); // pas de positie van speler aan.
+                  repaint(); // repaint
+                  System.out.println("Maze waarde is: "+ Vak[pathX][pathY]);
+                  
+                  if(Vak[y][x] == 9) // als een speler op eindbestemming heeft bereikt, dan is het spel uitgespeeld.
+                  {
+                      System.out.println("Game Finished!");
+                  }
+            }
+         */
+    
+    //voorspeler
+
+     
+    public void actionPerformed(ActionEvent e)
+    {
+      //  System.out.println("ActionPerformed");
+        repaint();   
+    }
+    
+    public class Al extends KeyAdapter{
+        public void keyPressed(KeyEvent e)
+        {
+             System.out.println("teste");
         if (e.getID() != KeyEvent.KEY_PRESSED) // als een actie van een knop niet gedrukt, dan gebeurt er niks
         {
             return;
@@ -107,30 +148,14 @@ public class Speelveld extends JFrame {
             
         speler.setxC(x); //update x en y coordinaat van de speler
         speler.setyC(y);
-        repaint();
+        }
+        }
+        
+        public void KeyReleased(KeyEvent e)
+        {
+            System.out.println("key released");
         }
     }
-        /*
-            if(vak[y][x].getCoordinatesOfEigenschap == 1) // als de aangevende positie van vak een muur bevat, dan een  melding tonen.
-            {
-                  System.out.println("Maze waarde is: "+ Vak[pathX][pathY]);
-                System.out.println("muur!");
-
-            }
-            else
-            {     changePosition(y,x); // pas de positie van speler aan.
-                  repaint(); // repaint
-                  System.out.println("Maze waarde is: "+ Vak[pathX][pathY]);
-                  
-                  if(Vak[y][x] == 9) // als een speler op eindbestemming heeft bereikt, dan is het spel uitgespeeld.
-                  {
-                      System.out.println("Game Finished!");
-                  }
-            }
-         */
-    
-    //voorspeler
-
     
     public void Start(){}
     public void Restart(){}
