@@ -16,8 +16,6 @@ public class Eigenschap {
     private int xC;
     private int yC;
     
-    public enum vakSoort { leeg, sleutel, muur, eindBestemming, barricade }
-    
    
     //constructor
     public Eigenschap(boolean beloopbaar, String bestandsNaam, int xC, int yC){
@@ -28,7 +26,10 @@ public class Eigenschap {
     }
 
     //methode die vakSoort moet vervangen..
-    public  void vakEigenschap(){}
+    public  boolean vakEigenschap()
+    {
+        return true;
+    }
             
             
     //get/set for beloopbaar

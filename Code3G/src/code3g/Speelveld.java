@@ -19,6 +19,8 @@ import javax.swing.JFrame;
 public class Speelveld extends JFrame {
 
     private Vak[][] vak;// object vak declareren
+    private final int ROW = 10;
+    private final int COL = 10; 
 
 
     @Override
@@ -45,7 +47,11 @@ public class Speelveld extends JFrame {
         //g.setColor(Color.decode("#176b08")); // kleur van een speler
         // g.fillOval(pathX * 30, pathY *30, 30, 30); // speler positioneren van een aangevende coordinaten
     }
-
+    
+    public void createVakken()
+    {
+        
+    }
     public Speelveld() {
         vak = new Vak[10][10];
        

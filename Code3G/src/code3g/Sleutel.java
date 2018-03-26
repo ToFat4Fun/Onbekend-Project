@@ -14,27 +14,25 @@ public class Sleutel extends Eigenschap {
     private int sleutelNummer;
     
     //constructor
-    public Sleutel(boolean beloopbaar, String bestandsNaam, String vakSoort, int xC, int yC, int sleutelNummer) {
-        super(beloopbaar, bestandsNaam, xC, yC);
+    public Sleutel( int xC, int yC, int sleutelNummer) 
+    {
+        super(true,"sleutel.png", xC, yC);
     }
 
-    
     //get/set for sleutelNummer
-    public int getSleutelNummer() {
+    public int getSleutelNummer() 
+    {
         return sleutelNummer;
     }
 
-    public void setSleutelNummer(int sleutelNummer) {
+    public void setSleutelNummer(int sleutelNummer) 
+    {
         this.sleutelNummer = sleutelNummer;
     }
     
-    
-    //when Speler picks up key, key is added to Speler Zak and key destroys itself
-    public void vernietigtZichzelf(Speler speler)
-    {
-        
-    }
-    
     //methode die vakSoort moet vervangen..
-    public  void vakEigenschap(){}
+    public boolean vakEigenschap()
+    {
+        return true;
+    }
 }

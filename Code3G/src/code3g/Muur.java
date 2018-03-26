@@ -11,15 +11,14 @@ package code3g;
  */
 public class Muur extends Eigenschap {
     
-    public Muur(boolean beloopbaar, String bestandsNaam, String vakSoort, int xC, int yC) {
-        super(beloopbaar, bestandsNaam, xC, yC);
+    public Muur( int xC, int yC) {
+        super(false, "muur.png", xC, yC);
     }
     
     
     //methode die vakSoort moet vervangen..
-    @Override
-    public  void vakEigenschap(){}
-    
-    //review this later..
-    
+    public  boolean vakEigenschap()
+    {
+        return false;
+    }
 }

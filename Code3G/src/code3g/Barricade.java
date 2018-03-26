@@ -14,8 +14,8 @@ public class Barricade extends Eigenschap implements Melding {
     private int bariccadeNummer;
     
     //constructor
-    public Barricade(boolean beloopbaar, String bestandsNaam, int xC, int yC, int barricadeNummer) {
-        super(beloopbaar, bestandsNaam, xC, yC);
+    public Barricade( int xC, int yC, int barricadeNummer) {
+        super(true,"hek.png", xC, yC);
     }
 
     //get/set for barricadeNummer which is the value of the barricade (the value determines which key is needed to open)
@@ -27,16 +27,12 @@ public class Barricade extends Eigenschap implements Melding {
         this.bariccadeNummer = bariccadeNummer;
     }
     
-    //selfdestruct when opened by player
-    //TODO: barricade needs to check Speler for matching key (Zak int)
-    public void vernietigtZichzelf(Speler speler)
-    {
-        //code here
-    }
-    
     
     //methode die vakSoort moet vervangen..
-    public  void vakEigenschap(){}
+    public  boolean vakEigenschap(){
+    
+    return true;
+    }
 }
 
 
