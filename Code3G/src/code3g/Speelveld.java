@@ -35,7 +35,7 @@ public class Speelveld extends JPanel implements ActionListener {
         {
             for (int col = 0; col < 10; col++) // for loop alle kolommen
             {
-                vak[row][col] = new Vak("#a90a08");
+                vak[row][col] = new Vak("#B9E6F0");
 
                 Color color; // kleur object van een vak declareren
 
@@ -45,8 +45,8 @@ public class Speelveld extends JPanel implements ActionListener {
                 g.drawRect(50 * col, 50 * row, 50, 50); // teken randen om een vak heen
             }
         }
-
-        g.drawImage(speler.getHuidigeAfbeelding(), speler.getxC() * 50, speler.getyC() * 50, 49, 49, this);
+        //teken de speler (sprites), beweeg speler steeds met 50 pixels (grootte van vak), +1 om hem aligned te krijgen.
+        g.drawImage(speler.getHuidigeAfbeelding(), (speler.getxC() * 50) + 1 , (speler.getyC() * 50) + 1, 49, 49, this);
 
     }
 
@@ -99,7 +99,7 @@ public class Speelveld extends JPanel implements ActionListener {
     public class Al extends KeyAdapter {
 
         public void keyPressed(KeyEvent e) {
-            System.out.println("teste");
+            //System.out.println("teste");
             if (e.getID() != KeyEvent.KEY_PRESSED) // als een actie van een knop niet gedrukt, dan gebeurt er niks
             {
                 return;
@@ -110,26 +110,29 @@ public class Speelveld extends JPanel implements ActionListener {
 
                 case KeyEvent.VK_RIGHT: // als recht, dan eentje opzij
                     speler.setHuidigeAfbeeldingRechts();
+                    System.out.println("Speler beweegt naar rechts");
                     x += 1;
                     break;
                 case KeyEvent.VK_LEFT:// eentje terug naar links
                     speler.setHuidigeAfbeeldingLinks();
+                    System.out.println("Speler beweegt naar links");
                     x -= 1;
                     break;
                 case KeyEvent.VK_DOWN:// naar benenden
                     speler.setHuidigeAfbeeldingDown();
+                    System.out.println("Speler beweegt naar beneden");
                     y += 1;
                     break;
                 case KeyEvent.VK_UP: // naar boven
                     speler.setHuidigeAfbeeldingUp();
+                    System.out.println("Speler beweegt naar boven");
                     y -= 1;
                     break;
                 default:
                     break;
             }
-
+            //set de bounds. speler mag alleen verplaatsen als hij zich op een van de vakken bevindt. als hij er buiten zou komen gebeurt er niets..
             if (x >= 0 && x <= 9 && y >= 0 && y <= 9) {
-
                 speler.setxC(x); //update x en y coordinaat van de speler
                 speler.setyC(y);
             }

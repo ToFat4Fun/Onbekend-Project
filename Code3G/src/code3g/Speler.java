@@ -21,6 +21,7 @@ public class Speler  {
     private int xC;
     private int yC;
     private int zak;
+    //4 afbeeldingen die wij gebruiken voor Speler..
     private final Image up= new ImageIcon("src\\Assets\\move_up.png").getImage();
     private final Image left= new ImageIcon("src\\Assets\\move_left.png").getImage();
     private final Image right= new ImageIcon("src\\Assets\\move_right.png").getImage();
@@ -59,9 +60,12 @@ public class Speler  {
     public void setZak(int zak) {
         this.zak = zak;
     }
+    
+    //methode om huidige afbeelding op te halen
     public Image getHuidigeAfbeelding(){
         return huidigeAfbeelding;
     }
+    //4 methoden om huidige afbeelding me in te stellen, zie speelveld en key events...
     public void setHuidigeAfbeeldingRechts(){
         this.huidigeAfbeelding = right;
     }
