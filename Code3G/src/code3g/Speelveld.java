@@ -19,6 +19,10 @@ import javax.swing.JFrame;
 public class Speelveld extends JFrame {
 
     private Vak[][] vak;// object vak declareren
+
+    private Speler speler;
+    
+    
     private final int ROW = 10;
     private final int COL = 10; 
 
@@ -32,16 +36,19 @@ public class Speelveld extends JFrame {
         {
             for (int col = 0; col < 10; col++) // for loop alle kolommen
             {
-                vak[row][col] = new Vak("#448744");
+                vak[row][col] = new Vak("#a90a08");
 
                 Color color; // kleur object van een vak declareren
 
                 g.setColor(Color.decode(vak[row][col].getKleur())); // geeft een geselecteerd kleur aan vak
-                g.fillRect(30 * col, 30 * row, 30, 30); //maak een vierkant 30x30 pixels.
+                g.fillRect(50 * col, 50 * row, 50, 50); //maak een vierkant 30x30 pixels.
                 g.setColor(Color.BLACK); // kleur van een rand is zwart
-                g.drawRect(30 * col, 30 * row, 30, 30); // teken randen om een vak heen
+                g.drawRect(50 * col, 50 * row, 50, 50); // teken randen om een vak heen
             }
         }
+        
+        
+        g.drawImage(speler.getHuidigeAfbeelding(), speler.getxC() * 50, speler.getyC() * 50, 49, 49, rootPane);
 
         //voor spelers:: binnenkort
         //g.setColor(Color.decode("#176b08")); // kleur van een speler
@@ -54,15 +61,16 @@ public class Speelveld extends JFrame {
     }
     public Speelveld() {
         vak = new Vak[10][10];
-       
+        speler = new Speler(0,0);
+        speler.setHuidigeAfbeeldingRechts();
         setTitle("Test");// naam van het scherm
-        setSize(640, 480);// breedte en hoogte instellen
+        setSize(700, 700);// breedte en hoogte instellen
         setLocationRelativeTo(null);// zet in het midden van het scherm
         setResizable(false);// de grootte van het scherm niet wijzigen.
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// zet scherm afsluiten als een standaard
         setVisible(true);//open het applicatie/scherm.
     }
-  /* //STAAT NU IN SPELER.JAVA
+
     @Override
     protected void processKeyEvent(KeyEvent e) // toetsenbord actie
     {
@@ -70,26 +78,38 @@ public class Speelveld extends JFrame {
         {
             return;
         }
-        int x = 1;// locatie van huidige pathX
-        int y = 1; // locatie van huidige pathY
+        int x = speler.getxC();// locatie van huidige pathX
+        int y = speler.getyC(); // locatie van huidige pathY
         switch (e.getKeyCode()) { // haalt waarde van toetsenbord op
 
             case KeyEvent.VK_RIGHT: // als recht, dan eentje opzij
+                speler.setHuidigeAfbeeldingRechts();
                 x += 1;
                 break;
             case KeyEvent.VK_LEFT:// eentje terug naar links
+                speler.setHuidigeAfbeeldingLinks();
                 x -= 1;
                 break;
             case KeyEvent.VK_DOWN:// naar benenden
+                speler.setHuidigeAfbeeldingDown();
                 y += 1;
                 break;
             case KeyEvent.VK_UP: // naar boven
+                speler.setHuidigeAfbeeldingUp();
                 y -= 1;
                 break;
             default:
                 break;
         }
-        */
+        
+        
+        if (x >= 0 && x <=9 && y >= 0 && y <=9){
+            
+        speler.setxC(x); //update x en y coordinaat van de speler
+        speler.setyC(y);
+        repaint();
+        }
+    }
         /*
             if(vak[y][x].getCoordinatesOfEigenschap == 1) // als de aangevende positie van vak een muur bevat, dan een  melding tonen.
             {
@@ -112,7 +132,7 @@ public class Speelveld extends JFrame {
     //voorspeler
 
     
-     public void Start(){}
+    public void Start(){}
     public void Restart(){}
     public void End(){}
 }

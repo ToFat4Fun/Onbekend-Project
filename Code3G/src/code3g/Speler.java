@@ -6,16 +6,14 @@
 package code3g;
 
 
-import java.awt.event.KeyEvent;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import java.awt.Graphics;
+
 /**
  *
  * @author Ta
  */
-public class Speler extends JFrame  {
+public class Speler  {
 
     
     private Image huidigeAfbeelding;   
@@ -23,10 +21,10 @@ public class Speler extends JFrame  {
     private int xC;
     private int yC;
     private int zak;
-    private final Image up= new ImageIcon("move_up.png").getImage();
-    private final Image left= new ImageIcon("move_left.png").getImage();
-    private final Image right= new ImageIcon("move_right.png").getImage();
-    private final Image down= new ImageIcon("move_down.png").getImage();
+    private final Image up= new ImageIcon("src\\Assets\\move_up.png").getImage();
+    private final Image left= new ImageIcon("src\\Assets\\move_left.png").getImage();
+    private final Image right= new ImageIcon("src\\Assets\\move_right.png").getImage();
+    private final Image down= new ImageIcon("src\\Assets\\move_down.png").getImage();
     
     
     //constructor
@@ -61,53 +59,23 @@ public class Speler extends JFrame  {
     public void setZak(int zak) {
         this.zak = zak;
     }
-    
-    
-
-    
-    @Override
-    protected void processKeyEvent(KeyEvent e) // toetsenbord actie
-    {
-        if (e.getID() != KeyEvent.KEY_PRESSED) // als een actie van een knop niet gedrukt, dan gebeurt er niks
-        {
-            return;
-        }
-
-        int x = 1;// locatie van huidige pathX
-        int y = 1; // locatie van huidige pathY
-        switch (e.getKeyCode()) { // haalt waarde van toetsenbord op
-
-            case KeyEvent.VK_RIGHT: // als recht, dan eentje opzij
-                huidigeAfbeelding = right;
-                x += 1;
-                break;
-            case KeyEvent.VK_LEFT:
-                huidigeAfbeelding = left;
-                x -= 1;
-                break;
-            case KeyEvent.VK_DOWN:
-                huidigeAfbeelding = down;
-                y += 1;
-                break;
-            case KeyEvent.VK_UP: 
-                huidigeAfbeelding = up;
-                y -= 1;
-                break;
-            default:
-                break;
-        }
-        setxC(x); //update x en y coordinaat van de speler
-        setyC(y);
-        repaint();
+    public Image getHuidigeAfbeelding(){
+        return huidigeAfbeelding;
+    }
+    public void setHuidigeAfbeeldingRechts(){
+        this.huidigeAfbeelding = right;
+    }
+    public void setHuidigeAfbeeldingLinks(){
+        this.huidigeAfbeelding = left;
+    }
+    public void setHuidigeAfbeeldingUp(){
+        this.huidigeAfbeelding = up;
+    }
+    public void setHuidigeAfbeeldingDown(){
+        this.huidigeAfbeelding = down;
     }
     
     
-    
-    @Override
-    public void paint(Graphics g){
-        super.paint(g);
-        g.drawImage(huidigeAfbeelding, xC, yC, rootPane);
-        repaint();
-    }
-}   
+}
+
 

@@ -80,7 +80,7 @@ public class Code3G {
             }
         }
         speelveld.createVakken();
-        speelveld.addEigenschappenForVakken(eigenschappen);
+        //speelveld.addEigenschappenForVakken(eigenschappen);
         speelveld.repaint();
         speelveld.setVisible(true);//open het applicatie/scherm.  
 
