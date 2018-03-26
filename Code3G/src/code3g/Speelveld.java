@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -18,9 +19,10 @@ import javax.swing.Timer;
  *
  * @author mucis
  */
-public class Speelveld extends JPanel implements ActionListener {
+//extends JComponent om de paar pixels te verfen. panel niet aan te raden.
+public class Speelveld extends JComponent implements ActionListener {
 
-    private Timer timer;
+    private Timer timer;// delay tijd aanmaken. bron: 
     private Vak[][] vak;// object vak declareren
 
     private Speler speler;
@@ -28,17 +30,26 @@ public class Speelveld extends JPanel implements ActionListener {
     private final int ROW = 10;
     private final int COL = 10;
 
+
+    public Speelveld() {
+        vak = new Vak[10][10]; // heeft 100 vakken. 
+        speler = new Speler(0, 0); // startpositie 0,0
+        addKeyListener(new Toetsenbord());// toetsenbord aan KeyListener koppelen
+        setFocusable(true);// this applicatie focuseren, om een toetsenbord werken te krijgen.
+        timer = new Timer(50, this); // delay this classe voor 25 milieseconden. net als bij Arduino
+        timer.start();// Activeer Timer. na iedere actie wordt verleng de timer dit programma.
+        speler.setHuidigeAfbeeldingRechts();// standaard afbeelding
+    }
+
     public void paint(Graphics g) {
         g.translate(100, 100); // geeft een positie van een aangemaakt paint
 
-        for (int row = 0; row < 10; row++)// for loop om alle vakken te tonen
+        for (int row = 0; row < ROW; row++)// for loop om alle vakken te tonen
         {
-            for (int col = 0; col < 10; col++) // for loop alle kolommen
+            for (int col = 0; col < COL; col++) // for loop alle kolommen
             {
-                vak[row][col] = new Vak("#B9E6F0");
 
                 Color color; // kleur object van een vak declareren
-
                 g.setColor(Color.decode(vak[row][col].getKleur())); // geeft een geselecteerd kleur aan vak
                 g.fillRect(50 * col, 50 * row, 50, 50); //maak een vierkant 30x30 pixels.
                 g.setColor(Color.BLACK); // kleur van een rand is zwart
@@ -49,57 +60,28 @@ public class Speelveld extends JPanel implements ActionListener {
         g.drawImage(speler.getHuidigeAfbeelding(), (speler.getxC() * 50) + 1 , (speler.getyC() * 50) + 1, 49, 49, this);
 
     }
-
+    
+    //Vak initiliseren
     public void createVakken() {
-
-    }
-
-    public Speelveld() {
-        vak = new Vak[10][10];
-        speler = new Speler(0, 0);
-        addKeyListener(new Al());
-        setFocusable(true);
-        timer = new Timer(25, this); // delay this classe voor 25 milieseconden. net als bij Arduino
-        timer.start();
-        speler.setHuidigeAfbeeldingRechts();
-    }
-
-    /*
-    @Override
-    protected void processKeyEvent(KeyEvent e) // toetsenbord actie
-    {
-       
-        repaint();
-        }
-    }*/
- /*
-            if(vak[y][x].getCoordinatesOfEigenschap == 1) // als de aangevende positie van vak een muur bevat, dan een  melding tonen.
+        
+        for (int row = 0; row < ROW; row++)// for loop om alle vakken te tonen
+        {
+            for (int col = 0; col < COL; col++) // for loop alle kolommen
             {
-                  System.out.println("Maze waarde is: "+ Vak[pathX][pathY]);
-                System.out.println("muur!");
-
+                vak[row][col] = new Vak("#B9E6F0");// object aanmaken met 
             }
-            else
-            {     changePosition(y,x); // pas de positie van speler aan.
-                  repaint(); // repaint
-                  System.out.println("Maze waarde is: "+ Vak[pathX][pathY]);
-                  
-                  if(Vak[y][x] == 9) // als een speler op eindbestemming heeft bereikt, dan is het spel uitgespeeld.
-                  {
-                      System.out.println("Game Finished!");
-                  }
-            }
-     */
-
-    //voorspeler
+        }
+    }
+    //activeer wanneer er een actie is. als in andere method een repaint wilt toevoegen, dan is dat niet meer nodig.
     public void actionPerformed(ActionEvent e) { // wanneer een dit klasse op focus gezet is, dan repaint hij de heletijd.
         repaint();
     }
 
-    public class Al extends KeyAdapter {
+    //inner class creeren, omdat JPanel al als extends gebruikt.
+    public class Toetsenbord extends KeyAdapter {
 
+        //wanneer een toetsenbord gedrukt is, voert dit methode uit
         public void keyPressed(KeyEvent e) {
-            //System.out.println("teste");
             if (e.getID() != KeyEvent.KEY_PRESSED) // als een actie van een knop niet gedrukt, dan gebeurt er niks
             {
                 return;
@@ -108,6 +90,7 @@ public class Speelveld extends JPanel implements ActionListener {
             int y = speler.getyC(); // locatie van huidige pathY
             switch (e.getKeyCode()) { // haalt waarde van toetsenbord op
 
+                //setHuidigeAfbeelding: verander de huidige afbeelding naar respectieve selectie van een toetsenbord.
                 case KeyEvent.VK_RIGHT: // als recht, dan eentje opzij
                     speler.setHuidigeAfbeeldingRechts();
                     System.out.println("Speler beweegt naar rechts");
@@ -124,7 +107,7 @@ public class Speelveld extends JPanel implements ActionListener {
                     y += 1;
                     break;
                 case KeyEvent.VK_UP: // naar boven
-                    speler.setHuidigeAfbeeldingUp();
+                    speler.setHuidigeAfbeeldingUp(); 
                     System.out.println("Speler beweegt naar boven");
                     y -= 1;
                     break;
@@ -133,17 +116,14 @@ public class Speelveld extends JPanel implements ActionListener {
             }
             //set de bounds. speler mag alleen verplaatsen als hij zich op een van de vakken bevindt. als hij er buiten zou komen gebeurt er niets..
             if (x >= 0 && x <= 9 && y >= 0 && y <= 9) {
-                speler.setxC(x); //update x en y coordinaat van de speler
-                speler.setyC(y);
+                speler.setxC(x); //update x coordinaat van de speler
+                speler.setyC(y); //update y coordinaat van de speler
             }
         }
 
-        public void KeyReleased(KeyEvent e) {
-            System.out.println("key released");
-        }
     }
 
-    public void Start() {
+    public void Start() { 
     }
 
     public void Restart() {
