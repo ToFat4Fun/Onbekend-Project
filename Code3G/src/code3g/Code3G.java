@@ -6,7 +6,6 @@
 package code3g;
 
 import java.util.ArrayList;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 
 /**
