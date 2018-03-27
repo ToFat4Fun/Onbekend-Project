@@ -35,10 +35,10 @@ public class Speelveld extends JComponent implements ActionListener {
         vak = new Vak[10][10]; // heeft 100 vakken. 
         speler = new Speler(0, 0); // startpositie 0,0
         addKeyListener(new Toetsenbord());// toetsenbord aan KeyListener koppelen
-        setFocusable(true);// this applicatie focuseren, om een toetsenbord werken te krijgen.
-        timer = new Timer(50, this); // delay this classe voor 25 milieseconden. net als bij Arduino
+        setFocusable(true);// deze window/applicatie focusen om keyboard werkend te krijgen.
+        timer = new Timer(50, this); // delay this classe voor 50 milieseconden. net als bij Arduino
         timer.start();// Activeer Timer. na iedere actie wordt verleng de timer dit programma.
-        speler.setHuidigeAfbeeldingRechts();// standaard afbeelding
+        speler.setHuidigeAfbeeldingRechts();// standaard afbeelding. hoe speler in begint staat..
     }
 
     //voeg hier eigenschap toe aan corresponding vak. 
@@ -60,8 +60,8 @@ public class Speelveld extends JComponent implements ActionListener {
             {
 
                 Color color; // kleur object van een vak declareren
-                g.setColor(Color.decode(vak[row][col].getKleur())); // geeft een geselecteerd kleur aan vak
-                g.fillRect(50 * col, 50 * row, 50, 50); //maak een vierkant 30x30 pixels.
+                g.setColor(Color.decode(vak[row][col].getKleur())); // geeft een geselecteerd kleur aan vak. decode omdat kleur een hex-code is..
+                g.fillRect(50 * col, 50 * row, 50, 50); //maak een vierkant 50x50 pixels.
                 g.setColor(Color.BLACK); // kleur van een rand is zwart
                 g.drawRect(50 * col, 50 * row, 50, 50); // teken randen om een vak heen
 
@@ -96,7 +96,7 @@ public class Speelveld extends JComponent implements ActionListener {
         {
             for (int col = 0; col < COL; col++) // for loop alle kolommen
             {
-                vak[row][col] = new Vak("#B9E6F0");// object aanmaken met 
+                vak[row][col] = new Vak("#B9E6F0");// object aanmaken met kleur parameter (hex-code)
             }
         }
     }
@@ -110,13 +110,14 @@ public class Speelveld extends JComponent implements ActionListener {
     //daardoor hoef je de andere methoden niet te implementeren.
     public class Toetsenbord extends KeyAdapter {
 
-        //wanneer een toetsenbord gedrukt is, voert dit methode uit
+        //wanneer een toetsenbord gedrukt is, voert deze methode uit
         public void keyPressed(KeyEvent e) {
-            //wanneer een toetsenbord gedrukt is, voert dit methode uit
-            if (e.getID() != KeyEvent.KEY_PRESSED) // als een actie van een knop niet gedrukt, dan gebeurt er niks
+            //wanneer een toetsenbord gedrukt is, voert deze methode uit
+            if (e.getID() != KeyEvent.KEY_PRESSED) // als een actie van een knop niet gedrukt is, dan gebeurt er niks
             {
                 return;
             }
+            //x en y aanmaken om te controleren of speler niet buiten bounds gaat...
             int x = speler.getxC();// locatie van huidige pathX
             int y = speler.getyC(); // locatie van huidige pathY
             switch (e.getKeyCode()) { // haalt waarde van toetsenbord op
@@ -145,7 +146,8 @@ public class Speelveld extends JComponent implements ActionListener {
                 default:
                     break;
             }
-            //set de bounds. speler mag alleen verplaatsen als hij zich op een van de vakken bevindt. als hij er buiten zou komen gebeurt er niets..
+            //set de bounds. speler mag alleen verplaatsen als hij zich op een van de vakken bevindt. controleer met x en y
+            //zouden x en y out of bounds gaan dan wordt xC en xY van Speler niet geupdate en kan Speler niet 'out of map' gaan..
             if (x >= 0 && x <= 9 && y >= 0 && y <= 9) {
                 //als een vak muur heeft, dan kan de speler niet verder lopen.
                 if (vak[y][x].getEigenschap() instanceof Muur) {

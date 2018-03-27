@@ -30,7 +30,7 @@ public class Sleutel extends Eigenschap {
     {
         this.sleutelNummer = sleutelNummer;
     }
-    
+    //geef Zak de waarde van sleutel die Speler opgepakt heeft..
     public boolean vakEigenschap(Speler speler)
     {
         speler.setZak(sleutelNummer);

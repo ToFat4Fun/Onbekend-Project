@@ -39,7 +39,7 @@ public class Vak{
     public void addEigenschap(Eigenschap e) {
         this.eigenschap = e;
     }
-
+    //maak vak leeg..
     public void emptyEigenschap() {
         eigenschap = null;
     }

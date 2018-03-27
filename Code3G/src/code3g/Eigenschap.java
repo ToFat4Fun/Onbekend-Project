@@ -15,6 +15,8 @@ import javax.swing.ImageIcon;
 public class Eigenschap {
     
     private boolean beloopbaar;// binnenkort niet meer nodig vanwege "instanceof" 
+    //uitleg; bestandsnaam voor elke subklasse, bestandsnaam is naam van bijbehorende afbeelding in assets.
+    //afbeelding instellen als ImageIcon van die bijbehorende asset..
     private String bestandsNaam;
     private Image afbeelding;
     private int xC;
