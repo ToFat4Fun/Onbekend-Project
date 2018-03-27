@@ -7,6 +7,7 @@ package code3g;
 
 
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 /**
@@ -78,6 +79,48 @@ public class Speler  {
     public void setHuidigeAfbeeldingDown(){
         this.huidigeAfbeelding = down;
     }
+    
+    public void lopen(KeyEvent e)
+    {
+        //wanneer een toetsenbord gedrukt is, voert dit methode uit
+            if (e.getID() != KeyEvent.KEY_PRESSED) // als een actie van een knop niet gedrukt, dan gebeurt er niks
+            {
+                return;
+            }
+            int x = getxC();// locatie van huidige pathX
+            int y = getyC(); // locatie van huidige pathY
+            switch (e.getKeyCode()) { // haalt waarde van toetsenbord op
+
+                //setHuidigeAfbeelding: verander de huidige afbeelding naar respectieve selectie van een toetsenbord.
+                case KeyEvent.VK_RIGHT: // als recht, dan eentje opzij
+                    setHuidigeAfbeeldingRechts();
+                    System.out.println("Speler beweegt naar rechts");
+                    x += 1;
+                    break;
+                case KeyEvent.VK_LEFT:// eentje terug naar links
+                    setHuidigeAfbeeldingLinks();
+                    System.out.println("Speler beweegt naar links");
+                    x -= 1;
+                    break;
+                case KeyEvent.VK_DOWN:// naar benenden
+                    setHuidigeAfbeeldingDown();
+                    System.out.println("Speler beweegt naar beneden");
+                    y += 1;
+                    break;
+                case KeyEvent.VK_UP: // naar boven
+                    setHuidigeAfbeeldingUp(); 
+                    System.out.println("Speler beweegt naar boven");
+                    y -= 1;
+                    break;
+                default:
+                    break;
+            }
+            //set de bounds. speler mag alleen verplaatsen als hij zich op een van de vakken bevindt. als hij er buiten zou komen gebeurt er niets..
+            if (x >= 0 && x <= 9 && y >= 0 && y <= 9) {
+                setxC(x); //update x coordinaat van de speler
+                setyC(y); //update y coordinaat van de speler
+            }
+        }
     
     
 }
