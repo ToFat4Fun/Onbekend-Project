@@ -64,6 +64,7 @@ public class Speelveld extends JComponent implements ActionListener {
                 g.fillRect(50 * col, 50 * row, 50, 50); //maak een vierkant 30x30 pixels.
                 g.setColor(Color.BLACK); // kleur van een rand is zwart
                 g.drawRect(50 * col, 50 * row, 50, 50); // teken randen om een vak heen
+                //controleer of corresponding vak wel een afbeelding bevat. is dit waar teken dan de afbeelding van betreffende vak
                 if(vak[row][col].getEigenschap() != null){
                 g.drawImage(vak[row][col].tekenVakAfbeelding(), 50 * col, 50 * row, 50, 50, null);
                 }
