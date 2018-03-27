@@ -39,7 +39,7 @@ public class StartScherm extends JFrame {
         makkelijk, normaal, moeilijk
     } // moeilijkheidsGraad in enum datatype.
 
-    public StartScherm() {
+    public StartScherm(Speelveld speelveld) {
 
         new JFrame();
 
@@ -59,15 +59,15 @@ public class StartScherm extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 System.out.println(button[0].getText());
                 setVisible(false);
-                OpenSpeelveld("test");
+                OpenSpeelveld("test",speelveld);
             }
         }
         );
     }
 
     //moeilijkheidsgraad meegeven
-    public void OpenSpeelveld(String Graad) {
-        Speelveld speelveld = new Speelveld();
+    public void OpenSpeelveld(String Graad,Speelveld speelveld) {
+        
 
         JFrame f = new JFrame();
         f.add(speelveld);
