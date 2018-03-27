@@ -7,41 +7,47 @@ package code3g;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author mucis
  */
-public class Vak {
-    
-    
+public class Vak implements Melding {
+
     private String kleur;
     private Eigenschap eigenschap;  //sla eigenschap hier in op
-    
+
     public Vak(String gekozenKleur) // verwacht een hexCode kleur
     {
         this.kleur = gekozenKleur;
     }
-    
-    public void setKleur(String gekozenKleur)
-    {
+
+    public void setKleur(String gekozenKleur) {
         this.kleur = kleur;
     }
-    
-    public String getKleur()
-    {
+
+    public String getKleur() {
         return this.kleur;
     }
-    
-    public Eigenschap getEigenschap(){
+
+    public Eigenschap getEigenschap() {
         return eigenschap;
     }
-    public void addEigenschap(Eigenschap e){
+
+    public void addEigenschap(Eigenschap e) {
         this.eigenschap = e;
     }
-    
+
     //tekent de afbeelding die aan vak is toegewezen via eigenschap
-    public Image tekenVakAfbeelding(){
+    public Image tekenVakAfbeelding() {
         return eigenschap.getAfbeelding();
+
+    }
+
+    public void meldingTonen() {
+        JFrame melding = new JFrame();
+        JOptionPane optionpane = new JOptionPane("Je hebt gewonnen!");
     }
 }
