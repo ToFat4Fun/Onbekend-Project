@@ -20,5 +20,6 @@ public class Muur extends Eigenschap {
     public  boolean vakEigenschap()
     {
         return false;
+        // do nothing
     }
 }

@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
  */
 public class Eigenschap {
     
-    private boolean beloopbaar;
+    private boolean beloopbaar;// binnenkort niet meer nodig vanwege "instanceof" 
     private String bestandsNaam;
     private Image afbeelding;
     private int xC;
@@ -32,9 +32,9 @@ public class Eigenschap {
     }
 
     //methode die vakSoort moet vervangen..
-    public  boolean vakEigenschap()
+    public boolean vakEigenschap()
     {
-        return true;
+        return false;
     }
             
             

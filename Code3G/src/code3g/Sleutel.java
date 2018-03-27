@@ -31,9 +31,9 @@ public class Sleutel extends Eigenschap {
         this.sleutelNummer = sleutelNummer;
     }
     
-    //methode die vakSoort moet vervangen..
-    public boolean vakEigenschap()
+    public boolean vakEigenschap(Speler speler)
     {
+        speler.setZak(sleutelNummer);
         return true;
     }
 }

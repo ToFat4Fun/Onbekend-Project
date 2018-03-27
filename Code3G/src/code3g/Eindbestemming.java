@@ -5,26 +5,31 @@
  */
 package code3g;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jurian
  */
 public class Eindbestemming extends Eigenschap implements Melding {
-    
+
     public Eindbestemming(int xC, int yC) {
         super(true, "finish.png", xC, yC);
     }
-    
+
     //methode die vakSoort moet vervangen..
-    public boolean vakEigenschap()
-    {
+    public boolean vakEigenschap() {
+        meldingTonen();
+        // hier komt binnenkort extra functie als direct startscherm tonen.
         return true;
     }
-    
-    //----------------insert something that happens when Speler steps on eindbestemming..
 
+    //----------------insert something that happens when Speler steps on eindbestemming..
     @Override
     public void meldingTonen() {
-        //code toevoegen meldingtonen
+        JFrame venster = new JFrame();
+        JOptionPane.showMessageDialog(venster,"Je hebt gewonnen!");
+        // binnenkort uitbreiden
     }
 }

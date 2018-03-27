@@ -10,12 +10,12 @@ package code3g;
  * @author jurian
  */
 public class Barricade extends Eigenschap implements Melding {
-    
+
     private int barricadeNummer;
-    
+
     //constructor
-    public Barricade( int xC, int yC, int barricadeNummer) {
-        super(true,"hek.png", xC, yC);
+    public Barricade(int xC, int yC, int barricadeNummer) {
+        super(true, "hek.png", xC, yC);
         this.barricadeNummer = barricadeNummer;
     }
 
@@ -27,19 +27,23 @@ public class Barricade extends Eigenschap implements Melding {
     public void setBarricadeNummer(int barricadeNummer) {
         this.barricadeNummer = barricadeNummer;
     }
-    
-    
-    //methode die vakSoort moet vervangen..
-    public  boolean vakEigenschap(){
-    
-    return true;
-    }
 
+    //methode die vakSoort moet vervangen..
+    public boolean vakEigenschap(Speler speler) {
+
+        // als een sleutel in een barricade past.
+        if (speler.getZak() == barricadeNummer) {
+            System.out.println("Sleutel past!");
+            return true;
+        } else {// anders een melding tonen.
+            meldingTonen();
+            return false;
+        }
+    }
+    
     @Override
     public void meldingTonen() {
         //code for melding tonen toevoegen
+    System.out.println("Sleutel past niet!");
     }
 }
-
-
-
