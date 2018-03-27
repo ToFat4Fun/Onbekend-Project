@@ -5,6 +5,8 @@
  */
 package code3g;
 
+import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 /**
  *
  * @author jurian
@@ -12,4 +14,6 @@ package code3g;
 public interface Melding {
     
     //code here hier moet toch joptionpane pop-up?
+  public void meldingTonen();
+   
 }

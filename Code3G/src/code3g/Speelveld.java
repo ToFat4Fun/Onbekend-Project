@@ -102,5 +102,11 @@ public class Speelveld extends JComponent implements ActionListener {
             speler.lopen(e);
 
         }
+        
+ 
     }
+    
+   
 }
+            
+
