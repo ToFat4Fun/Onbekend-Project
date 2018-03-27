@@ -5,6 +5,9 @@
  */
 package code3g;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author jurian
@@ -13,6 +16,7 @@ public class Eigenschap {
     
     private boolean beloopbaar;
     private String bestandsNaam;
+    private Image afbeelding;
     private int xC;
     private int yC;
     
@@ -21,6 +25,8 @@ public class Eigenschap {
     public Eigenschap(boolean beloopbaar, String bestandsNaam, int xC, int yC){
         this.beloopbaar = beloopbaar;
         this.bestandsNaam = bestandsNaam;
+        afbeelding = new ImageIcon("src\\Assets\\" + bestandsNaam).getImage();
+
         this.xC = xC;
         this.yC = yC;
     }

@@ -59,15 +59,14 @@ public class StartScherm extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 System.out.println(button[0].getText());
                 setVisible(false);
-                OpenSpeelveld("test",speelveld);
+                OpenSpeelveld("test", speelveld);
             }
         }
         );
     }
 
     //moeilijkheidsgraad meegeven
-    public void OpenSpeelveld(String Graad,Speelveld speelveld) {
-        
+    public void OpenSpeelveld(String Graad, Speelveld speelveld) {
 
         JFrame f = new JFrame();
         f.add(speelveld);
