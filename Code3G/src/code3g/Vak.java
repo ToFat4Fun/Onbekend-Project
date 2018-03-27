@@ -5,12 +5,18 @@
  */
 package code3g;
 
+import java.awt.Graphics;
+import java.awt.Image;
+
 /**
  *
  * @author mucis
  */
 public class Vak {
+    
+    
     private String kleur;
+    private Eigenschap eigenschap;  //sla eigenschap hier in op
     
     public Vak(String gekozenKleur) // verwacht een hexCode kleur
     {
@@ -25,5 +31,17 @@ public class Vak {
     public String getKleur()
     {
         return this.kleur;
+    }
+    
+    public Eigenschap getEigenschap(){
+        return eigenschap;
+    }
+    public void addEigenschap(Eigenschap e){
+        this.eigenschap = e;
+    }
+    
+    //tekent de afbeelding die aan vak is toegewezen via eigenschap
+    public Image tekenVakAfbeelding(){
+        return eigenschap.getAfbeelding();
     }
 }

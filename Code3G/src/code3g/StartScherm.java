@@ -72,7 +72,7 @@ public class StartScherm extends JFrame {
         f.add(speelveld);
         JPanel BottomPanel = new JPanel();// Paneel voor 3 knoppen aanmaken
         BottomPanel.setLayout(new GridLayout(1, 3));
-
+        
         BottomPanel.add(speelveldButton[0]);
         BottomPanel.add(speelveldButton[1]);
         BottomPanel.add(speelveldButton[2]);
@@ -131,7 +131,8 @@ public class StartScherm extends JFrame {
             {200, 0, 100, 50, 0, 0, 0, 0, 0},
             {0, 0, 100, 150, 0, 0, 0, 0, 0, 0}
         };
-
+        
+        //onderstaande code vergelijkt waarde uit gemaakte speelveld en bepaald het type eigenschap..
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
 
@@ -154,7 +155,7 @@ public class StartScherm extends JFrame {
             }
         }
         speelveld.createVakken();
-        //speelveld.addEigenschappenForVakken(eigenschappen);
+        speelveld.addEigenschap(eigenschappen); //geeft eigenschap door als parameter aan eigenschappen zodat vak weet welke type eigenschap het is
         speelveld.setVisible(true);//open het applicatie/scherm.  
     }
 

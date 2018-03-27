@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import javax.swing.JComponent;
 import javax.swing.Timer;
 
@@ -39,8 +40,18 @@ public class Speelveld extends JComponent implements ActionListener {
         speler.setHuidigeAfbeeldingRechts();// standaard afbeelding
     }
 
+    //voeg hier eigenschap toe aan corresponding vak. 
+    public void addEigenschap(ArrayList<Eigenschap> e) {
+
+        for (Eigenschap eigenschap : e) {
+            vak[eigenschap.getxC()][eigenschap.getyC()].addEigenschap(eigenschap);
+        }
+    }
+
+    
     @Override
-    public void paint(Graphics g) {
+    public void paint(Graphics g
+    ) {
         g.translate(100, 100); // geeft een positie van een aangemaakt paint
 
         for (int row = 0; row < ROW; row++)// for loop om alle vakken te tonen
@@ -53,16 +64,21 @@ public class Speelveld extends JComponent implements ActionListener {
                 g.fillRect(50 * col, 50 * row, 50, 50); //maak een vierkant 30x30 pixels.
                 g.setColor(Color.BLACK); // kleur van een rand is zwart
                 g.drawRect(50 * col, 50 * row, 50, 50); // teken randen om een vak heen
+                if(vak[row][col].getEigenschap() != null){
+                g.drawImage(vak[row][col].tekenVakAfbeelding(), 50 * col, 50 * row, 50, 50, null);
+                }
             }
+            
         }
         //teken de speler (sprites), beweeg speler steeds met 50 pixels (grootte van vak), +1 om hem aligned te krijgen.
-        g.drawImage(speler.getHuidigeAfbeelding(), (speler.getxC() * 50) + 1 , (speler.getyC() * 50) + 1, 49, 49, this);
-
+        g.drawImage(speler.getHuidigeAfbeelding(), (speler.getxC() * 50) + 1, (speler.getyC() * 50) + 1, 49, 49, this);
     }
     
+    
     //Vak initiliseren
+
     public void createVakken() {
-        
+
         for (int row = 0; row < ROW; row++)// for loop om alle vakken te tonen
         {
             for (int col = 0; col < COL; col++) // for loop alle kolommen
@@ -71,6 +87,7 @@ public class Speelveld extends JComponent implements ActionListener {
             }
         }
     }
+
     //activeer wanneer er een actie is. als in andere method een repaint wilt toevoegen, dan is dat niet meer nodig.
     public void actionPerformed(ActionEvent e) { // wanneer een dit klasse op focus gezet is, dan repaint hij de heletijd.
         repaint();
@@ -82,8 +99,8 @@ public class Speelveld extends JComponent implements ActionListener {
 
         //wanneer een toetsenbord gedrukt is, voert dit methode uit
         public void keyPressed(KeyEvent e) {
-           speler.lopen(e);
-        
+            speler.lopen(e);
+
         }
     }
 }

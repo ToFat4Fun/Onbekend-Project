@@ -47,8 +47,12 @@ public class Eigenschap {
         this.beloopbaar = beloopbaar;
     }
     
+    public Image getAfbeelding(){
+        return afbeelding;
+    }
+    
     //get/set for Afbeelding
-    public String getAfbeelding() {
+    public String getBestandsNaam() {
         return bestandsNaam;
     }
 
