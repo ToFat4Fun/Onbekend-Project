@@ -6,6 +6,7 @@
 package code3g;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -48,7 +49,6 @@ public class Speelveld extends JComponent implements ActionListener {
         }
     }
 
-    
     @Override
     public void paint(Graphics g
     ) {
@@ -64,20 +64,33 @@ public class Speelveld extends JComponent implements ActionListener {
                 g.fillRect(50 * col, 50 * row, 50, 50); //maak een vierkant 30x30 pixels.
                 g.setColor(Color.BLACK); // kleur van een rand is zwart
                 g.drawRect(50 * col, 50 * row, 50, 50); // teken randen om een vak heen
+
                 //controleer of corresponding vak wel een afbeelding bevat. is dit waar teken dan de afbeelding van betreffende vak
-                if(vak[row][col].getEigenschap() != null){
-                g.drawImage(vak[row][col].tekenVakAfbeelding(), 50 * col, 50 * row, 50, 50, null);
+                if (vak[row][col].getEigenschap() != null) {
+                    g.drawImage(vak[row][col].tekenVakAfbeelding(), 50 * col, 50 * row, 50, 50, null);
+                    
+                    //nummer toevoegen als het vak een sleutel of een barricade is.
+                    if(vak[row][col].getEigenschap() instanceof Sleutel || vak[row][col].getEigenschap() instanceof Barricade)
+                    {
+                        g.setFont(new Font("default", Font.BOLD, 20)); // font aanpassen en in dikgedrukt weergeven    
+                        g.setColor(Color.decode("#F")); // zwart kleur
+                        
+                        g.drawString(vak[row][col].getVakNummer() + "", 50 * col + 10 - 1, 50 * row + 45 - 1); // een stapje terug om de outlijn te tonen
+                        
+                        g.setColor(Color.decode("#FFFFFF")); // witte kleur
+                        g.drawString(vak[row][col].getVakNummer() + "", 50 * col + 10, 50 * row + 45);// toon nummer, maar dan onderaan van iedere geselecteerde vakken.
+                    
+                    }
                 }
+                
             }
-            
+
         }
         //teken de speler (sprites), beweeg speler steeds met 50 pixels (grootte van vak), +1 om hem aligned te krijgen.
         g.drawImage(speler.getHuidigeAfbeelding(), (speler.getxC() * 50) + 1, (speler.getyC() * 50) + 1, 49, 49, this);
     }
-    
-    
-    //Vak initiliseren
 
+    //Vak initiliseren
     public void createVakken() {
 
         for (int row = 0; row < ROW; row++)// for loop om alle vakken te tonen
@@ -103,11 +116,7 @@ public class Speelveld extends JComponent implements ActionListener {
             speler.lopen(e);
 
         }
-        
- 
-    }
-    
-   
-}
-            
 
+    }
+
+}

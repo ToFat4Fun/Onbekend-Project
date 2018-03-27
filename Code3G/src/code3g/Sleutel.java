@@ -17,6 +17,7 @@ public class Sleutel extends Eigenschap {
     public Sleutel( int xC, int yC, int sleutelNummer) 
     {
         super(true,"sleutel.png", xC, yC);
+        this.sleutelNummer = sleutelNummer;
     }
 
     //get/set for sleutelNummer

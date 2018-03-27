@@ -39,7 +39,11 @@ public class Vak implements Melding {
     public void addEigenschap(Eigenschap e) {
         this.eigenschap = e;
     }
-
+    
+    public int getVakNummer()
+    {
+        return eigenschap instanceof Sleutel ? ((Sleutel) eigenschap).getSleutelNummer() : ((Barricade) eigenschap).getBarricadeNummer(); 
+    }
     //tekent de afbeelding die aan vak is toegewezen via eigenschap
     public Image tekenVakAfbeelding() {
         return eigenschap.getAfbeelding();

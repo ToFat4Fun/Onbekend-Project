@@ -11,20 +11,21 @@ package code3g;
  */
 public class Barricade extends Eigenschap implements Melding {
     
-    private int bariccadeNummer;
+    private int barricadeNummer;
     
     //constructor
     public Barricade( int xC, int yC, int barricadeNummer) {
         super(true,"hek.png", xC, yC);
+        this.barricadeNummer = barricadeNummer;
     }
 
     //get/set for barricadeNummer which is the value of the barricade (the value determines which key is needed to open)
-    public int getBariccadeNummer() {
-        return bariccadeNummer;
+    public int getBarricadeNummer() {
+        return barricadeNummer;
     }
 
-    public void setBariccadeNummer(int bariccadeNummer) {
-        this.bariccadeNummer = bariccadeNummer;
+    public void setBarricadeNummer(int barricadeNummer) {
+        this.barricadeNummer = barricadeNummer;
     }
     
     
