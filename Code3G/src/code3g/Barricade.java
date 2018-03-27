@@ -33,6 +33,11 @@ public class Barricade extends Eigenschap implements Melding {
     
     return true;
     }
+
+    @Override
+    public void meldingTonen() {
+        //code for melding tonen toevoegen
+    }
 }
 
 

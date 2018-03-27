@@ -22,4 +22,9 @@ public class Eindbestemming extends Eigenschap implements Melding {
     }
     
     //----------------insert something that happens when Speler steps on eindbestemming..
+
+    @Override
+    public void meldingTonen() {
+        //code toevoegen meldingtonen
+    }
 }
