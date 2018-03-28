@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  *
  * @author mucis
  */
-public class Vak{
+public class Vak {
 
     private String kleur;
     private Eigenschap eigenschap;  //sla eigenschap hier in op
@@ -39,6 +39,7 @@ public class Vak{
     public void addEigenschap(Eigenschap e) {
         this.eigenschap = e;
     }
+
     //maak vak leeg..
     public void emptyEigenschap() {
         eigenschap = null;
@@ -47,8 +48,7 @@ public class Vak{
     public boolean tellVakEigenschap(Speler speler) {
         if (eigenschap instanceof Barricade) {
             return ((Barricade) eigenschap).vakEigenschap(speler); // vakeigenschap van barricade aanroepen 
-        }
-        if (eigenschap instanceof Sleutel) {
+        } else if (eigenschap instanceof Sleutel) {
             return ((Sleutel) eigenschap).vakEigenschap(speler); // zelfde als van barricade.
         } else if (eigenschap instanceof Eindbestemming) {
             return ((Eindbestemming) eigenschap).vakEigenschap(); // zelfde als van hierboven
