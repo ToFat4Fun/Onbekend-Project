@@ -10,8 +10,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import javax.swing.JComponent;
 import javax.swing.Timer;
@@ -21,7 +21,7 @@ import javax.swing.Timer;
  * @author mucis
  */
 //extends JComponent om de paar pixels te verfen. panel niet aan te raden.
-public class Speelveld extends JComponent implements ActionListener {
+public class Speelveld extends JComponent implements ActionListener, KeyListener {
 
     private Timer timer;// delay tijd voor ActionListener aanmaken. bron: https://stackoverflow.com/questions/22366890/java-timer-action-listener
     private Vak[][] vak;// object vak declareren
@@ -34,9 +34,10 @@ public class Speelveld extends JComponent implements ActionListener {
     public Speelveld() {
         vak = new Vak[10][10]; // heeft 100 vakken. 
         speler = new Speler(0, 0); // startpositie 0,0
-        addKeyListener(new Toetsenbord());// toetsenbord aan KeyListener koppelen
+
+        addKeyListener(this);// toetsenbord aan KeyListener koppelen
         setFocusable(true);// deze window/applicatie focusen om keyboard werkend te krijgen.
-        timer = new Timer(50, this); // delay this classe voor 50 milieseconden. net als bij Arduino
+        timer = new Timer(50, this); // delay this classe voor 50 milieseconden. net als bij Arduino. maar dit heeft te maken met ActionListener
         timer.start();// Activeer Timer. na iedere actie wordt verleng de timer dit programma.
         speler.setHuidigeAfbeeldingRechts();// standaard afbeelding. hoe speler in begint staat..
     }
@@ -102,63 +103,28 @@ public class Speelveld extends JComponent implements ActionListener {
     }
 
     //activeer wanneer er een actie is. als in andere method een repaint wilt toevoegen, dan is dat niet meer nodig.
+    @Override
     public void actionPerformed(ActionEvent e) { // wanneer een dit klasse op focus gezet is, dan repaint hij de heletijd.
         repaint();
     }
 
-    //inner class creeren, omdat keyAdapter beter is dan interface KeyListener, omdat KeyPressed methode alleen nodig is.
-    //daardoor hoef je de andere methoden niet te implementeren.
-    public class Toetsenbord extends KeyAdapter {
+    @Override
+    public void keyPressed(KeyEvent e) {
+        speler.lopen(e, vak);
+        // de reden dat vak array is, om een eigenschap op te halen, denk aan muren en eindbestemming.
+        //Daarna komt er ook een interactie tussen de speler en het vak.
+        // Normaal gesproken staat speler op 1 vak, maar dit is alleen voor een parameter dependency.
+        //daarom is KeyListener hier geplaatst.
+    }
 
-        //wanneer een toetsenbord gedrukt is, voert deze methode uit
-        public void keyPressed(KeyEvent e) {
-            //wanneer een toetsenbord gedrukt is, voert deze methode uit
-            if (e.getID() != KeyEvent.KEY_PRESSED) // als een actie van een knop niet gedrukt is, dan gebeurt er niks
-            {
-                return;
-            }
-            //x en y aanmaken om te controleren of speler niet buiten bounds gaat...
-            int x = speler.getxC();// locatie van huidige pathX
-            int y = speler.getyC(); // locatie van huidige pathY
-            switch (e.getKeyCode()) { // haalt waarde van toetsenbord op
+    @Override // moet implementeren van KeyListener.
+    public void keyTyped(KeyEvent e) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-                //setHuidigeAfbeelding: verander de huidige afbeelding naar respectieve selectie van een toetsenbord.
-                case KeyEvent.VK_RIGHT: // als recht, dan eentje opzij
-                    speler.setHuidigeAfbeeldingRechts();
-                    System.out.println("Speler beweegt naar rechts");
-                    x += 1;
-                    break;
-                case KeyEvent.VK_LEFT:// eentje terug naar links
-                    speler.setHuidigeAfbeeldingLinks();
-                    System.out.println("Speler beweegt naar links");
-                    x -= 1;
-                    break;
-                case KeyEvent.VK_DOWN:// naar benenden
-                    speler.setHuidigeAfbeeldingDown();
-                    System.out.println("Speler beweegt naar beneden");
-                    y += 1;
-                    break;
-                case KeyEvent.VK_UP: // naar boven
-                    speler.setHuidigeAfbeeldingUp();
-                    System.out.println("Speler beweegt naar boven");
-                    y -= 1;
-                    break;
-                default:
-                    break;
-            }
-            //set de bounds. speler mag alleen verplaatsen als hij zich op een van de vakken bevindt. controleer met x en y
-            //zouden x en y out of bounds gaan dan wordt xC en xY van Speler niet geupdate en kan Speler niet 'out of map' gaan..
-            if (x >= 0 && x <= 9 && y >= 0 && y <= 9) {
-                //als een vak muur heeft, dan kan de speler niet verder lopen.
-                if (vak[y][x].getEigenschap() instanceof Muur) {
-                } else {
-                    speler.lopen(x, y, vak[y][x]); 
-                    //coordinaten van de speler updaten en vervolgens staat de speler op een nieuwe vak
-                }
-
-            }
-        }
-
+    @Override //moet implementeren van KeyListener.
+    public void keyReleased(KeyEvent e) {
+        //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
