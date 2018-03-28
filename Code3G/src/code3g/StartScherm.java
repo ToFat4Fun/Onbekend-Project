@@ -106,7 +106,8 @@ public class StartScherm extends JFrame {
         nummer 4 is eindbestemming
          */
         //eerste makkelijke map
-        int[][] makkelijkMap1 = new int[][]{
+        //TIJDLELIJKE NAAM makkelijk1 omdat het anders nog niet werkt..
+        int[][] map = new int[][]{
             {0, 1, 2, 0, 0, 0, 0, 2, 2, 2},
             {0, 0, 0, 0, 3, 3, 0, 2, 2, 2},
             {0, 0, 2, 0, 0, 0, 0, 2, 2, 3},
@@ -120,7 +121,7 @@ public class StartScherm extends JFrame {
         };
 
         //codenummer voor alle vakken
-        int[][] MakkelijkMapNummer1 = new int[][]{
+        int[][] mapNummer = new int[][]{
             {0, 0, 100, 0, 0, 0, 0, 30, 70, 90},
             {0, 0, 0, 0, 100, 300, 0, 90, 40, 90},
             {0, 0, 100, 0, 0, 0, 0, 300, 300, 100},
