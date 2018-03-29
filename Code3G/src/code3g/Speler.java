@@ -31,7 +31,6 @@ public class Speler {
     public Speler(int xC, int yC) {
         this.xC = xC;
         this.yC = yC;
-        //   addKeyListener(this);
     }
 
     public int getxC() {
@@ -121,7 +120,6 @@ public class Speler {
             //set de bounds. speler mag alleen verplaatsen als hij zich op een van de vakken bevindt. controleer met x en y
             //zouden x en y out of bounds gaan dan wordt xC en xY van Speler niet geupdate en kan Speler niet 'out of map' gaan..
             if (x >= 0 && x <= 9 && y >= 0 && y <= 9) {
-                System.out.println("test");
                 //als een vak muur heeft, dan kan de speler niet verder lopen.
                 if (allVak[y][x].getEigenschap() instanceof Muur) {
                 } else {
