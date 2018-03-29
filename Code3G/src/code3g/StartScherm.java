@@ -67,10 +67,6 @@ public class StartScherm extends JFrame {
         );
     }
 
-    public void Restart() {
-        openSpeelveld("test");
-    }
-
     //moeilijkheidsgraad meegeven
     public void openSpeelveld(String Graad) {
 
@@ -103,9 +99,9 @@ public class StartScherm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent event) {
                 System.out.println(speelveldButton[0].getText());
-                f.dispose();
-                speelveld = new Speelveld();
-                Restart();
+                f.dispose(); //destroys and cleans up the JFrame it is attached to.
+                speelveld = new Speelveld(); //create new speelveld a.k.a restart the game by creating a new speelveld
+                openSpeelveld("test"); //maakt nieuwe frame "restarts"
                 speelveldButton[0].setFocusable(false);
                 speelveldButton[1].setFocusable(false);
                 speelveldButton[2].setFocusable(false);
