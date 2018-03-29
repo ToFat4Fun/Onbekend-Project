@@ -49,15 +49,15 @@ public class StartScherm extends JFrame {
 
         new JFrame();
         this.speelveld = speelveld;
-        this.setLayout(new BorderLayout(3,0));
+        this.setLayout(new BorderLayout(3,1));
         
         //JPanel voor image bovenin aanmaken..
         //bron: https://stackoverflow.com/questions/11243724/java-adding-imageicon-to-jlabel
-        JPanel afbeeldingPanel = new JPanel();
-        ImageIcon image = new ImageIcon("src\\Assets\\move_up.png");
+        JPanel afbeeldingPanel1 = new JPanel();
+        ImageIcon image = new ImageIcon("src\\Assets\\header.png");
         JLabel imagelabel = new JLabel(image);
-        afbeeldingPanel.add(imagelabel);
-        add(afbeeldingPanel, BorderLayout.NORTH);
+        afbeeldingPanel1.add(imagelabel);
+        add(afbeeldingPanel1, BorderLayout.NORTH);
         
         
         JPanel BottomPanel = new JPanel();// Paneel voor 3 knoppen aanmaken
