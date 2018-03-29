@@ -6,10 +6,15 @@
 package code3g;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -43,17 +48,33 @@ public class StartScherm extends JFrame {
     public StartScherm(Speelveld speelveld) {
 
         new JFrame();
-
         this.speelveld = speelveld;
+        this.setLayout(new BorderLayout(3,0));
+        
+        //JPanel voor image bovenin aanmaken..
+        //bron: https://stackoverflow.com/questions/11243724/java-adding-imageicon-to-jlabel
+        JPanel afbeeldingPanel = new JPanel();
+        ImageIcon image = new ImageIcon("src\\Assets\\move_up.png");
+        JLabel imagelabel = new JLabel(image);
+        afbeeldingPanel.add(imagelabel);
+        add(afbeeldingPanel, BorderLayout.NORTH);
+        
+        
         JPanel BottomPanel = new JPanel();// Paneel voor 3 knoppen aanmaken
-        JLabel text = new JLabel("  kies moeilijkheidsgraad"); //beetje spatie toevoegen
-        BottomPanel.setLayout(new GridLayout(1, 3));
-
+        BottomPanel.setLayout(new GridLayout(0, 3));
+        //JPanel voor text in midden aanmaken
+        JLabel text = new JLabel("kies moeilijkheidsgraad");
+        text.setFont(new Font("Serif", Font.BOLD, 18));
+        text.setForeground(Color.DARK_GRAY);// bron: http://www.asjava.com/swing/set-jlabel-font-size-and-color/
+        JPanel menuTekstPanel = new JPanel(new GridBagLayout());
+        //menuTekstPanel.setBackground(Color.red);
+        menuTekstPanel.add(text);
+        add(menuTekstPanel, BorderLayout.CENTER);
+        
+        button[0].setPreferredSize(new Dimension(50,50));
         BottomPanel.add(button[0]);
         BottomPanel.add(button[1]);
         BottomPanel.add(button[2]);
-
-        add(text, BorderLayout.CENTER);
         add(BottomPanel, BorderLayout.SOUTH);
 
         button[0].addActionListener(new ActionListener() {
@@ -98,20 +119,36 @@ public class StartScherm extends JFrame {
         speelveldButton[1].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-                System.out.println(speelveldButton[0].getText());
+                System.out.println(speelveldButton[1].getText());
                 f.dispose(); //destroys and cleans up the JFrame it is attached to.
                 speelveld = new Speelveld(); //create new speelveld a.k.a restart the game by creating a new speelveld
                 openSpeelveld("test"); //maakt nieuwe frame "restarts"
                 speelveldButton[0].setFocusable(false);
                 speelveldButton[1].setFocusable(false);
                 speelveldButton[2].setFocusable(false);
-                speelveld.setFocusable(true);// this applicatie focuseren, om een toetsenbord werken te krijgen.
-
+                speelveld.setFocusable(true);// this applicatie focuseren, om een toetsenbord werkend te krijgen.
             }
         }
         );
 
-        f.setTitle("BarricadeSleutel spel door groep 3.5.7 2018");// naam van het scherm
+        //STOPPEN-knop, ga terug naar startscherm
+        speelveldButton[2].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                System.out.println(speelveldButton[2].getText());
+                f.dispose(); //destroys and cleans up the JFrame it is attached to. (speelveld)
+                StartScherm s = new StartScherm(speelveld);
+                s.setVisible(true);
+                s.setSize(500, 400);
+                s.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                s.setLocationRelativeTo(null);
+                s.setResizable(false);
+                s.setTitle("BarricadeSleutel spel groep 3.5.7 2018");
+            }
+        }
+        );
+
+        f.setTitle("BarricadeSleutel spel groep 3.5.7 2018");// naam van het scherm
         f.setSize(700, 800);// breedte en hoogte instellen
         f.setLocationRelativeTo(null);// zet in het midden van een windows OS.
         f.setResizable(false);// de grootte van het scherm niet wijzigen.
