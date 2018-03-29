@@ -5,6 +5,9 @@
  */
 package code3g;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jurian
@@ -35,12 +38,11 @@ public class Barricade extends Eigenschap implements Melding {
         if (speler.getZak() == barricadeNummer) {
             System.out.println("Sleutel past!");
             return true;
-        } else {// anders een melding tonen.
+        } else {// anders een melding tonen. aanroepen meldingTonen methode
             meldingTonen();
             return false;
         }
     }
-    
     public boolean vakEigenschap()
     {
         return false;
@@ -48,7 +50,8 @@ public class Barricade extends Eigenschap implements Melding {
     
     @Override
     public void meldingTonen() {
-        //code for melding tonen toevoegen
-    System.out.println("Sleutel past niet!");
+        JFrame venster = new JFrame();
+        JOptionPane.showMessageDialog(venster,"Sleutel past niet!");
+        
     }
 }

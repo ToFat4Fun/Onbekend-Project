@@ -15,7 +15,8 @@ import javax.swing.JOptionPane;
 public class Eindbestemming extends Eigenschap implements Melding {
 
     public Eindbestemming(int xC, int yC) {
-        super("finish.png", xC, yC);
+
+        super( "finish2.png", xC, yC);
     }
 
     //methode die vakSoort moet vervangen..

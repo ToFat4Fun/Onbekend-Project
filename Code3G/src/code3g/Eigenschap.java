@@ -24,6 +24,7 @@ public class Eigenschap {
    
     //constructor
     public Eigenschap(String bestandsNaam, int xC, int yC){
+
         this.bestandsNaam = bestandsNaam;
         afbeelding = new ImageIcon("src\\Assets\\" + bestandsNaam).getImage();
 
