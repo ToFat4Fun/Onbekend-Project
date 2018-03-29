@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
  */
 public class Eigenschap {
     
-    private boolean beloopbaar;// binnenkort niet meer nodig vanwege "instanceof" 
+     
     //uitleg; bestandsnaam voor elke subklasse, bestandsnaam is naam van bijbehorende afbeelding in assets.
     //afbeelding instellen als ImageIcon van die bijbehorende asset..
     private String bestandsNaam;
@@ -25,7 +25,6 @@ public class Eigenschap {
    
     //constructor
     public Eigenschap(boolean beloopbaar, String bestandsNaam, int xC, int yC){
-        this.beloopbaar = beloopbaar;
         this.bestandsNaam = bestandsNaam;
         afbeelding = new ImageIcon("src\\Assets\\" + bestandsNaam).getImage();
 
@@ -37,16 +36,6 @@ public class Eigenschap {
     public boolean vakEigenschap()
     {
         return false;
-    }
-            
-            
-    //get/set for beloopbaar
-    public boolean getBeloopbaar() {
-        return beloopbaar;
-    }
-
-    public void setBeloopbaar(boolean isBeloopBaar) {
-        this.beloopbaar = beloopbaar;
     }
     
     public Image getAfbeelding(){
