@@ -34,6 +34,7 @@ public class StartScherm extends JFrame {
         new JButton("Restart"),
         new JButton("Stoppen")
     };
+    private Speelveld speelveld;
 
     public enum MoeilijkheidsGraad { // bron: https://stackoverflow.com/questions/3978654/best-way-to-create-enum-of-strings
         makkelijk, normaal, moeilijk
@@ -43,6 +44,7 @@ public class StartScherm extends JFrame {
 
         new JFrame();
 
+        this.speelveld = speelveld;
         JPanel BottomPanel = new JPanel();// Paneel voor 3 knoppen aanmaken
         JLabel text = new JLabel("  kies moeilijkheidsgraad"); //beetje spatie toevoegen
         BottomPanel.setLayout(new GridLayout(1, 3));
@@ -59,28 +61,51 @@ public class StartScherm extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 System.out.println(button[0].getText());
                 setVisible(false);
-                OpenSpeelveld("test", speelveld);
+                openSpeelveld("test");
             }
         }
         );
     }
 
+    public void Restart() {
+        openSpeelveld("test");
+    }
+
     //moeilijkheidsgraad meegeven
-    public void OpenSpeelveld(String Graad, Speelveld speelveld) {
+    public void openSpeelveld(String Graad) {
 
         JFrame f = new JFrame();
         f.add(speelveld);
         JPanel BottomPanel = new JPanel();// Paneel voor 3 knoppen aanmaken
         BottomPanel.setLayout(new GridLayout(1, 3));
-        
+
         BottomPanel.add(speelveldButton[0]);
         BottomPanel.add(speelveldButton[1]);
         BottomPanel.add(speelveldButton[2]);
         f.add(BottomPanel, BorderLayout.SOUTH);
+
+        //knop start
         speelveldButton[0].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
                 System.out.println(speelveldButton[0].getText());
+                speelveldButton[0].setFocusable(false);
+                speelveldButton[1].setFocusable(false);
+                speelveldButton[2].setFocusable(false);
+                speelveld.setFocusable(true);// this applicatie focuseren, om een toetsenbord werken te krijgen.
+
+            }
+        }
+        );
+
+        //knop restarten met zelfde map
+        speelveldButton[1].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                System.out.println(speelveldButton[0].getText());
+                f.dispose();
+                speelveld = new Speelveld();
+                Restart();
                 speelveldButton[0].setFocusable(false);
                 speelveldButton[1].setFocusable(false);
                 speelveldButton[2].setFocusable(false);
@@ -159,7 +184,6 @@ public class StartScherm extends JFrame {
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},};
 
-
         //derde makkelijke map
         int[][] MakkelijkMap3 = new int[][]{
             {0, 3, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -187,7 +211,7 @@ public class StartScherm extends JFrame {
             {700, 800, 0, 0, 0, 0, 0, 0, 0, 0}
         };
 
-int[][] NormaleMap1 = new int[][]{
+        int[][] NormaleMap1 = new int[][]{
             {0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
             {3, 2, 2, 2, 2, 2, 2, 2, 3, 1},
             {0, 2, 1, 0, 1, 0, 1, 2, 2, 1},
@@ -326,8 +350,7 @@ int[][] NormaleMap1 = new int[][]{
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 4},
-        };
+            {1, 1, 1, 1, 1, 1, 1, 1, 1, 4},};
 
         int[][] MoeilijkeMapNummer3 = new int[][]{
             {0, 9999999, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -341,7 +364,7 @@ int[][] NormaleMap1 = new int[][]{
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 4}
         };
-               
+
         //onderstaande code vergelijkt waarde uit gemaakte speelveld en bepaald het type eigenschap..
         for (int i = 0; i < NormaleMap1.length; i++) {
             for (int j = 0; j < NormaleMap1[i].length; j++) {
