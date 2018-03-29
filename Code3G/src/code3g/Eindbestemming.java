@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 public class Eindbestemming extends Eigenschap implements Melding {
 
     public Eindbestemming(int xC, int yC) {
-        super(true, "finish.png", xC, yC);
+        super("finish.png", xC, yC);
     }
 
     //methode die vakSoort moet vervangen..
@@ -25,6 +25,10 @@ public class Eindbestemming extends Eigenschap implements Melding {
         return true;
     }
 
+     //methode die vakSoort moet vervangen..
+    public boolean vakEigenschap(Speler speler) {
+        return false;
+    }
     //----------------insert something that happens when Speler steps on eindbestemming..
     @Override
     public void meldingTonen() {

@@ -15,7 +15,7 @@ public class Barricade extends Eigenschap implements Melding {
 
     //constructor
     public Barricade(int xC, int yC, int barricadeNummer) {
-        super(true, "hek.png", xC, yC);
+        super("hek.png", xC, yC);
         this.barricadeNummer = barricadeNummer;
     }
 
@@ -39,6 +39,11 @@ public class Barricade extends Eigenschap implements Melding {
             meldingTonen();
             return false;
         }
+    }
+    
+    public boolean vakEigenschap()
+    {
+        return false;
     }
     
     @Override

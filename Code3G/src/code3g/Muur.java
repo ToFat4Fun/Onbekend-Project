@@ -12,14 +12,19 @@ package code3g;
 public class Muur extends Eigenschap {
     
     public Muur( int xC, int yC) {
-        super(false, "muur.png", xC, yC);
+        super("muur.png", xC, yC);
     }
     
     
     //methode die vakSoort moet vervangen..
-    public  boolean vakEigenschap()
+    public  boolean vakEigenschap(Speler speler)
     {
         return false;
-        // do nothing
+        // Speler mag niet op het veld lopen.
+    }
+     public  boolean vakEigenschap()
+    {
+        return false;
+        // Speler mag niet op het veld lopen.
     }
 }

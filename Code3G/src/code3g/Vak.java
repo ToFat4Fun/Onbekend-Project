@@ -45,20 +45,27 @@ public class Vak {
         eigenschap = null;
     }
 
-    public boolean tellVakEigenschap(Speler speler) {
-        if (eigenschap instanceof Barricade) {
-            return ((Barricade) eigenschap).vakEigenschap(speler); // vakeigenschap van barricade aanroepen 
-        } else if (eigenschap instanceof Sleutel) {
-            return ((Sleutel) eigenschap).vakEigenschap(speler); // zelfde als van barricade.
-        } else if (eigenschap instanceof Eindbestemming) {
-            return ((Eindbestemming) eigenschap).vakEigenschap(); // zelfde als van hierboven
+    public boolean requestVakEigenschap(Speler speler) {
+
+        if (eigenschap != null) {
+            // alleen bij barricade en sleutel een instanceof gebruiken. omdat deze twee andere operatie heeft
+            if (eigenschap.vakEigenschap(speler)) {
+                //natuurlijk een object leeggooien
+                eigenschap = null;
+                return true; // vakeigenschap van barricade aanroepen 
+                
+            } else {
+                return eigenschap.vakEigenschap(); // zelfde als van hierboven
+            }
         }
         return true;
     }
 
     public int getVakNummer() {
         //hiermee kan ik kijken of de klasse eigenschap een specifieke subklas is. 
-        return eigenschap instanceof Sleutel ? ((Sleutel) eigenschap).getSleutelNummer()
+        // operaties casten.
+        return eigenschap instanceof Sleutel
+                ? ((Sleutel) eigenschap).getSleutelNummer() // eigenschap subclass sleutel is dan een operatie van een sleutel gebruiken anders barricade
                 : ((Barricade) eigenschap).getBarricadeNummer(); // ((Barricade) eigenschap) hiermee kan ik de operaties van Barricade ook gebruiken..
     }
 

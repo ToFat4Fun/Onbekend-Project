@@ -87,8 +87,7 @@ public class Speler {
             return;
         }
         // als een gebruiker op een toets drukt, behalve pijltoetsen. dan gebeurt er niks.
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_UP) 
-        {        //x en y aanmaken om te controleren of speler niet buiten bounds gaat...
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_UP) {        //x en y aanmaken om te controleren of speler niet buiten bounds gaat...
             int x = this.xC;// locatie van huidige pathX
             int y = this.yC; // locatie van huidige pathY
             switch (e.getKeyCode()) { // haalt waarde van toetsenbord op
@@ -120,22 +119,16 @@ public class Speler {
             //set de bounds. speler mag alleen verplaatsen als hij zich op een van de vakken bevindt. controleer met x en y
             //zouden x en y out of bounds gaan dan wordt xC en xY van Speler niet geupdate en kan Speler niet 'out of map' gaan..
             if (x >= 0 && x <= 9 && y >= 0 && y <= 9) {
+                
                 //als een vak muur heeft, dan kan de speler niet verder lopen.
-                if (allVak[y][x].getEigenschap() instanceof Muur) {
-                } else {
+                //interactie tussen de speler en het vak
+                if (allVak[y][x].requestVakEigenschap(this)) {// als een interactie gelukt is, dan mag speler lopen.
+                    //coordinaten van de speler updaten en vervolgens staat de speler op een nieuwe vak
+                    this.xC = x;
+                    this.yC = y;
                     this.vak = allVak[y][x];//speler staat op geselecteerd vak.
-
-                    //interactie tussen de speler en het vak
-                    if (vak.tellVakEigenschap(this)) {// als er een interactie geweest is, dan worden een speelobject/eigenschap leeggegooid.
-                        if (vak.getEigenschap() instanceof Eindbestemming) { // eindbestemming mag niet leeggegooid worden.
-                        } else {
-                            vak.emptyEigenschap(); // Eigenschap in vak leeggooien.
-                        }
-                        //coordinaten van de speler updaten en vervolgens staat de speler op een nieuwe vak
-                        this.xC = x;
-                        this.yC = y;
-                    }
                 }
+
             }
         }
     }

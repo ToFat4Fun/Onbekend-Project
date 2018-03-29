@@ -10,30 +10,32 @@ package code3g;
  * @author jurian
  */
 public class Sleutel extends Eigenschap {
-    
+
     private int sleutelNummer;
-    
+
     //constructor
-    public Sleutel( int xC, int yC, int sleutelNummer) 
-    {
-        super(true,"sleutel.png", xC, yC);
+    public Sleutel(int xC, int yC, int sleutelNummer) {
+        super("sleutel.png", xC, yC);
         this.sleutelNummer = sleutelNummer;
     }
 
     //get/set for sleutelNummer
-    public int getSleutelNummer() 
-    {
+    public int getSleutelNummer() {
         return sleutelNummer;
     }
 
-    public void setSleutelNummer(int sleutelNummer) 
-    {
+    public void setSleutelNummer(int sleutelNummer) {
         this.sleutelNummer = sleutelNummer;
     }
+
     //geef Zak de waarde van sleutel die Speler opgepakt heeft..
-    public boolean vakEigenschap(Speler speler)
-    {
+    public boolean vakEigenschap(Speler speler) {
         speler.setZak(sleutelNummer);
         return true;
+    }
+//geef Zak de waarde van sleutel die Speler opgepakt heeft..
+
+    public boolean vakEigenschap() {
+        return false;
     }
 }
