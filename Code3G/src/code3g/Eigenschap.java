@@ -33,7 +33,7 @@ public class Eigenschap {
     }
 
     //methode die vakSoort moet vervangen..
-    public  boolean vakEigenschap(Speler speler)
+        public  boolean vakEigenschap(Speler speler)
     {
         return false;
     }

@@ -138,7 +138,7 @@ public class StartScherm extends JFrame {
                 speelveldButton[1].setFocusable(false);
                 speelveldButton[2].setFocusable(false);
                 speelveld.setFocusable(true);// this applicatie focuseren, om een toetsenbord werken te krijgen.
-
+                
             }
         }
         );

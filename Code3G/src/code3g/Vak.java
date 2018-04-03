@@ -44,7 +44,7 @@ public class Vak {
     public void emptyEigenschap() {
         eigenschap = null;
     }
-
+    //deze methode controleert of speler op een vak mag lopen
     public boolean requestVakEigenschap(Speler speler) {
 
         if (eigenschap != null) {
