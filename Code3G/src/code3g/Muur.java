@@ -15,13 +15,6 @@ public class Muur extends Eigenschap {
         super("muur.png", xC, yC);
     }
     
-    
-    //methode die vakSoort moet vervangen..
-    public  boolean vakEigenschap(Speler speler)
-    {
-        return false;
-        // Speler mag niet op het veld lopen.
-    }
      public  boolean vakEigenschap()
     {
         return false;
