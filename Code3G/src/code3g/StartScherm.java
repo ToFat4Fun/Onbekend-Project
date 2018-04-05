@@ -38,7 +38,7 @@ public class StartScherm extends JFrame {
     
     private int gekozenMoeilijkheidsgraad = 1;
     private int onthoudRestartMap;
-    
+    private JFrame f;
     private JButton[] speelveldButton = new JButton[]{
         new JButton("Start"),
         new JButton("Restart"),
@@ -88,7 +88,7 @@ public class StartScherm extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 gekozenMoeilijkheidsgraad = 1;
                 setVisible(false);
-                openSpeelveld();
+                initialiseerMapEnKnop();
             }
         }
         );
@@ -99,7 +99,8 @@ public class StartScherm extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 gekozenMoeilijkheidsgraad = 2;
                 setVisible(false);
-                openSpeelveld();
+                
+                initialiseerMapEnKnop();
             }
         }
         );
@@ -110,30 +111,20 @@ public class StartScherm extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 gekozenMoeilijkheidsgraad = 3;
                 setVisible(false);
-                openSpeelveld();
+                initialiseerMapEnKnop();
             }
         }
         );
     }
 
     //moeilijkheidsgraad meegeven
-    public void openSpeelveld() {
-
-        JFrame f = new JFrame();
-        f.add(speelveld);
-        JPanel BottomPanel = new JPanel();// Paneel voor 3 knoppen aanmaken
-        BottomPanel.setLayout(new GridLayout(1, 3));
-
-        BottomPanel.add(speelveldButton[0]);
-        BottomPanel.add(speelveldButton[1]);
-        BottomPanel.add(speelveldButton[2]);
-        f.add(BottomPanel, BorderLayout.SOUTH);
-
+    public void initialiseerMapEnKnop() {
         //knop start
         speelveldButton[0].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
                 System.out.println(speelveldButton[0].getText());
+                maakSpeelveldAan();
                 speelveldButton[0].setFocusable(false);
                 speelveldButton[1].setFocusable(false);
                 speelveldButton[2].setFocusable(false);
@@ -147,25 +138,18 @@ public class StartScherm extends JFrame {
         speelveldButton[1].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-                System.out.println(speelveldButton[0].getText());
-                f.dispose(); //destroys and cleans up the JFrame it is attached to.
-                speelveld = new Speelveld(); //create new speelveld a.k.a restart the game by creating a new speelveld
-                openSpeelveld(); //maakt nieuwe frame "restarts"
+                System.out.println(speelveldButton[1].getText() + " gedrukt");
+                
+                f.dispose();
+                speelveld = new Speelveld();
+                maakSpeelveldAan();
                 speelveldButton[0].setFocusable(false);
                 speelveldButton[1].setFocusable(false);
                 speelveldButton[2].setFocusable(false);
-                speelveld.setFocusable(true);// this applicatie focuseren, om een toetsenbord werken te krijgen.
-
+                
             }
         }
         );
-
-        f.setTitle("BarricadeSleutel spel door groep 3.5.7 2018");// naam van het scherm
-        f.setSize(700, 800);// breedte en hoogte instellen
-        f.setLocationRelativeTo(null);// zet in het midden van een windows OS.
-        f.setResizable(false);// de grootte van het scherm niet wijzigen.
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// zet scherm afsluiten als een standaard
-        f.setVisible(true);//open het applicatie/scherm.
 
         /////////////////////////////////
         int[][] makkelijkMap1;
@@ -527,6 +511,30 @@ public class StartScherm extends JFrame {
                 }
             }
         }
+        
+        maakSpeelveldAan();
+    }
+    
+    public void maakSpeelveldAan()
+    {
+        
+        f = new JFrame();
+        f.add(speelveld);
+        JPanel BottomPanel = new JPanel();// Paneel voor 3 knoppen aanmaken
+        BottomPanel.setLayout(new GridLayout(1, 3));
+
+        BottomPanel.add(speelveldButton[0]);
+        BottomPanel.add(speelveldButton[1]);
+        BottomPanel.add(speelveldButton[2]);
+        f.add(BottomPanel, BorderLayout.SOUTH);
+        
+        f.setTitle("BarricadeSleutel spel door groep 3.5.7 2018");// naam van het scherm
+        f.setSize(700, 800);// breedte en hoogte instellen
+        f.setLocationRelativeTo(null);// zet in het midden van een windows OS.
+        f.setResizable(false);// de grootte van het scherm niet wijzigen.
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// zet scherm afsluiten als een standaard
+        f.setVisible(true);//open het applicatie/scherm.
+        
         speelveld.createVakken();
         speelveld.addEigenschap(eigenschappen); //geeft eigenschap door als parameter aan eigenschappen zodat vak weet welke type eigenschap het is
         speelveld.setVisible(true);//open het applicatie/scherm.  
