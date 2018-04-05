@@ -36,22 +36,31 @@ public class Barricade extends Eigenschap implements Melding {
 
         // als een sleutel in een barricade past.
         if (speler.getZak() == barricadeNummer) {
-            System.out.println("Sleutel past!");
             return true;
-        } else {// anders een melding tonen. aanroepen meldingTonen methode
-            meldingTonen();
+        } 
+        // anders een melding tonen. aanroepen meldingTonen methode
+        else if (speler.getZak() == 0) {
+            meldingTonen("je hebt geen sleutel!");
+            return false;
+        }
+        else{
+            meldingTonen("Sleutel past niet!");
             return false;
         }
     }
-    public boolean vakEigenschap()
-    {
+        
+        
+        
+        
+
+    public boolean vakEigenschap() {
         return false;
     }
-    
+
     @Override
-    public void meldingTonen() {
+    public void meldingTonen(String tekst) {
         JFrame venster = new JFrame();
-        JOptionPane.showMessageDialog(venster,"Sleutel past niet!");
-        
+        JOptionPane.showMessageDialog(venster, tekst);
+
     }
 }
