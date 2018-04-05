@@ -121,6 +121,7 @@ public class StartScherm extends JFrame {
         speelveldButton[0].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
+                f.dispose();
                 System.out.println(speelveldButton[0].getText());
                 maakSpeelveldAan();
                 speelveldButton[0].setFocusable(false);
