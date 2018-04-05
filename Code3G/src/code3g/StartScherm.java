@@ -97,6 +97,7 @@ public class StartScherm extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 gekozenMoeilijkheidsgraad = 2;
                 setVisible(false);
+                initialiseerMapEnKnop();
             }
         }
         );
@@ -119,8 +120,8 @@ public class StartScherm extends JFrame {
         speelveldButton[0].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-                maakMap();// maak nieuwe map aan
                 f.dispose();// huidige jframe weggooien
+                maakMap();// maak nieuwe map aan
                 speelveld = new Speelveld(); // nieuwe speelveld aanmaken
                 maakSpeelveldAan(); // speelveld aan jframe toevoegen
                 speelveldButton[0].setFocusable(false);
@@ -519,8 +520,6 @@ public class StartScherm extends JFrame {
                 }
             }
         }
-
-        maakSpeelveldAan();
     }
 
     public void maakSpeelveldAan() {
