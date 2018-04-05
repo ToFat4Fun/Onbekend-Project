@@ -14,6 +14,6 @@ import javax.swing.JFrame;
 public interface Melding {
     
     //code here hier moet toch joptionpane pop-up?
-  public void meldingTonen();
+  public void meldingTonen(String tekst);
    
 }

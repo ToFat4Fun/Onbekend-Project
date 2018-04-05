@@ -31,15 +31,20 @@ public class Barricade extends Eigenschap implements Melding {
         this.barricadeNummer = barricadeNummer;
     }
 
-    //methode die vakSoort moet vervangen..
+//methode die vakSoort moet vervangen..
     public boolean vakEigenschap(Speler speler) {
 
         // als een sleutel in een barricade past.
         if (speler.getZak() == barricadeNummer) {
-            System.out.println("Sleutel past!");
             return true;
-        } else {// anders een melding tonen. aanroepen meldingTonen methode
-            meldingTonen();
+        } 
+        // anders een melding tonen. aanroepen meldingTonen methode
+        else if (speler.getZak() == 0) {
+            meldingTonen("je hebt geen sleutel!");
+            return false;
+        }
+        else{
+            meldingTonen("Sleutel past niet!");
             return false;
         }
     }
@@ -49,9 +54,9 @@ public class Barricade extends Eigenschap implements Melding {
     }
     
     @Override
-    public void meldingTonen() {
+    public void meldingTonen(String tekst) {
         JFrame venster = new JFrame();
-        JOptionPane.showMessageDialog(venster,"Sleutel past niet!");
+        JOptionPane.showMessageDialog(venster,tekst);
         
     }
 }

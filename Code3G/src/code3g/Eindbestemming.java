@@ -21,7 +21,7 @@ public class Eindbestemming extends Eigenschap implements Melding {
 
     //methode die vakSoort moet vervangen..
     public boolean vakEigenschap() {
-        meldingTonen();
+        meldingTonen("je hebt gewonnen");
         // hier komt binnenkort extra functie als direct startscherm tonen.
         return true;
     }
@@ -31,10 +31,13 @@ public class Eindbestemming extends Eigenschap implements Melding {
         return false;
     }
     //----------------insert something that happens when Speler steps on eindbestemming..
-    @Override
-    public void meldingTonen() {
+    public void meldingTonen(String tekst) {
         JFrame venster = new JFrame();
         JOptionPane.showMessageDialog(venster,"Je hebt gewonnen!");
         // binnenkort uitbreiden
+    }
+
+    public void meldingTonen() {
+        //...
     }
 }
