@@ -97,7 +97,6 @@ public class StartScherm extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 gekozenMoeilijkheidsgraad = 2;
                 setVisible(false);
-                initialiseerMapEnKnop();
             }
         }
         );
@@ -141,6 +140,15 @@ public class StartScherm extends JFrame {
                 speelveldButton[0].setFocusable(false);
                 speelveldButton[1].setFocusable(false);
                 speelveldButton[2].setFocusable(false);
+            }
+        }
+        );
+
+        //stoppen knop
+        speelveldButton[2].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                System.out.println(speelveldButton[1].getText() + " stoppen");
             }
         }
         );
@@ -512,6 +520,7 @@ public class StartScherm extends JFrame {
             }
         }
 
+        maakSpeelveldAan();
     }
 
     public void maakSpeelveldAan() {
