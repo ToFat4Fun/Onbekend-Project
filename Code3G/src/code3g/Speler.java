@@ -95,7 +95,7 @@ public class Speler {
                 //setHuidigeAfbeelding: verander de huidige afbeelding naar respectieve selectie van een toetsenbord.
                 case KeyEvent.VK_RIGHT: // als recht, dan eentje opzij
                     setHuidigeAfbeeldingRechts();
-                    System.out.println("Speler beweegt naar rechts");
+                    System.out.println("Speler beweegt naar rechts"); //dit is eigenlijk al de test om te kijken of methode werkt (voor unit testen)
                     x += 1;
                     break;
                 case KeyEvent.VK_LEFT:// eentje terug naar links
