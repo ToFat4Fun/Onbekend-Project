@@ -39,10 +39,11 @@ public class Barricade extends Eigenschap implements Melding {
             return true;
         } 
         // anders een melding tonen. aanroepen meldingTonen methode
+        //default speler heeft geen sleutel en waarde is dan dus 0. print dat speler geen sleutel bij zich heeft!
         else if (speler.getZak() == 0) {
             meldingTonen("je hebt geen sleutel!");
             return false;
-        }
+        } //als zak waarde niet overeenkomt met barricade waarde..
         else{
             meldingTonen("Sleutel past niet!");
             return false;
