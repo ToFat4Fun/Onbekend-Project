@@ -150,6 +150,15 @@ public class StartScherm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent event) {
                 System.out.println(speelveldButton[1].getText() + " stoppen");
+                StartScherm scherm = new StartScherm(speelveld);
+                f.dispose();
+
+                scherm.setTitle("BarricadeSleutel spel groep 3.5.7 2018");// naam van het scherm
+                scherm.setSize(500, 400);// breedte en hoogte instellen
+                scherm.setLocationRelativeTo(null);
+                scherm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// zet scherm afsluiten als een standaard
+                scherm.setVisible(true);
+                //System.exit(0);
             }
         }
         );
