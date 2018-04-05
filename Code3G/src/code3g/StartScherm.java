@@ -35,7 +35,6 @@ public class StartScherm extends JFrame {
         new JButton(MoeilijkheidsGraad.moeilijk.name())
     };
 
-    
     private int gekozenMoeilijkheidsgraad = 1;
     private int onthoudRestartMap;
     private JFrame f;
@@ -54,8 +53,8 @@ public class StartScherm extends JFrame {
 
         new JFrame();
         this.speelveld = speelveld;
-        this.setLayout(new BorderLayout(3,1));
-        
+        this.setLayout(new BorderLayout(3, 1));
+
         //JPanel voor image bovenin aanmaken..
         //bron: https://stackoverflow.com/questions/11243724/java-adding-imageicon-to-jlabel
         JPanel afbeeldingPanel1 = new JPanel();
@@ -63,8 +62,7 @@ public class StartScherm extends JFrame {
         JLabel imagelabel = new JLabel(image);
         afbeeldingPanel1.add(imagelabel);
         add(afbeeldingPanel1, BorderLayout.NORTH);
-        
-        
+
         JPanel BottomPanel = new JPanel();// Paneel voor 3 knoppen aanmaken
         BottomPanel.setLayout(new GridLayout(0, 3));
         //JPanel voor text in midden aanmaken
@@ -75,8 +73,8 @@ public class StartScherm extends JFrame {
         //menuTekstPanel.setBackground(Color.red);
         menuTekstPanel.add(text);
         add(menuTekstPanel, BorderLayout.CENTER);
-        
-        button[0].setPreferredSize(new Dimension(50,50));
+
+        button[0].setPreferredSize(new Dimension(50, 50));
         BottomPanel.add(button[0]);
         BottomPanel.add(button[1]);
         BottomPanel.add(button[2]);
@@ -99,7 +97,6 @@ public class StartScherm extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 gekozenMoeilijkheidsgraad = 2;
                 setVisible(false);
-                
                 initialiseerMapEnKnop();
             }
         }
@@ -119,37 +116,40 @@ public class StartScherm extends JFrame {
 
     //moeilijkheidsgraad meegeven
     public void initialiseerMapEnKnop() {
-        //knop start
+        //Herstart verschillende map
         speelveldButton[0].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-                System.out.println(speelveldButton[0].getText());
-                maakSpeelveldAan();
+                maakMap();// maak nieuwe map aan
+                f.dispose();// huidige jframe weggooien
+                speelveld = new Speelveld(); // nieuwe speelveld aanmaken
+                maakSpeelveldAan(); // speelveld aan jframe toevoegen
                 speelveldButton[0].setFocusable(false);
                 speelveldButton[1].setFocusable(false);
                 speelveldButton[2].setFocusable(false);
-                speelveld.setFocusable(true);// this applicatie focuseren, om een toetsenbord werken te krijgen.
-                
             }
         }
         );
 
-        //knop restarten met zelfde map
+        //Herstart met zelfde map
         speelveldButton[1].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-                System.out.println(speelveldButton[1].getText() + " gedrukt");
-                
-                f.dispose();
-                speelveld = new Speelveld();
-                maakSpeelveldAan();
+                f.dispose(); // huidige frame weggooien
+                speelveld = new Speelveld(); // nieuwe speelveld aanmaken
+                maakSpeelveldAan(); // jframe speelveld toevoegen.
                 speelveldButton[0].setFocusable(false);
                 speelveldButton[1].setFocusable(false);
                 speelveldButton[2].setFocusable(false);
-                
             }
         }
         );
+
+        maakMap();
+        maakSpeelveldAan();
+    }
+
+    public void maakMap() {
 
         /////////////////////////////////
         int[][] makkelijkMap1;
@@ -511,13 +511,11 @@ public class StartScherm extends JFrame {
                 }
             }
         }
-        
-        maakSpeelveldAan();
+
     }
-    
-    public void maakSpeelveldAan()
-    {
-        
+
+    public void maakSpeelveldAan() {
+
         f = new JFrame();
         f.add(speelveld);
         JPanel BottomPanel = new JPanel();// Paneel voor 3 knoppen aanmaken
@@ -527,14 +525,14 @@ public class StartScherm extends JFrame {
         BottomPanel.add(speelveldButton[1]);
         BottomPanel.add(speelveldButton[2]);
         f.add(BottomPanel, BorderLayout.SOUTH);
-        
+
         f.setTitle("BarricadeSleutel spel door groep 3.5.7 2018");// naam van het scherm
         f.setSize(700, 800);// breedte en hoogte instellen
         f.setLocationRelativeTo(null);// zet in het midden van een windows OS.
         f.setResizable(false);// de grootte van het scherm niet wijzigen.
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// zet scherm afsluiten als een standaard
         f.setVisible(true);//open het applicatie/scherm.
-        
+
         speelveld.createVakken();
         speelveld.addEigenschap(eigenschappen); //geeft eigenschap door als parameter aan eigenschappen zodat vak weet welke type eigenschap het is
         speelveld.setVisible(true);//open het applicatie/scherm.  
