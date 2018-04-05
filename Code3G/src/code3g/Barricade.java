@@ -34,7 +34,7 @@ public class Barricade extends Eigenschap implements Melding {
 //methode die vakSoort moet vervangen..
     public boolean vakEigenschap(Speler speler) {
 
-        // als een sleutel in een barricade past.
+        // als een sleutel in een barricade past mag speler op vak lopen (return true)
         if (speler.getZak() == barricadeNummer) {
             return true;
         } 

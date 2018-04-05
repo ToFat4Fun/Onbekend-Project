@@ -67,30 +67,34 @@ public class BarricadeTest {
     /**
      * Test of vakEigenschap method, of class Barricade.
      */
+    //ik gebruik setZak om te controleren of de methode wel echt werkt aangezien cosntructor van speler geen zak waarde krijgt
+    //en deze methode toch zak gaat vergelijken met barricadeNummer. kortom deze methode kijkt of speler wel juiste sleutel heeft om barricade te openen.
     @Test
     public void testVakEigenschap_Speler() {
         System.out.println("vakEigenschap");
-        Speler speler = null;
-        Barricade instance = null;
-        boolean expResult = false;
+        Speler speler = new Speler(10,10);
+        speler.setZak(200); //comment dit en dzet expResult false voor andere correcte werking
+        Barricade instance = new Barricade(10,20,200); //geef barricade x,y en waarde van barricade
+        boolean expResult = true;
         boolean result = instance.vakEigenschap(speler);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
      * Test of vakEigenschap method, of class Barricade.
      */
+    //kijkt alleen of speler op dit type vak mag lopen, zie methode hierboven voor uitbreiding.
     @Test
     public void testVakEigenschap_0args() {
         System.out.println("vakEigenschap");
-        Barricade instance = null;
+        Barricade instance = new Barricade(30,30, 300);
         boolean expResult = false;
         boolean result = instance.vakEigenschap();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
