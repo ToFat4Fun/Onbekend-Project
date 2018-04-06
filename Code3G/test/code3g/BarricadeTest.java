@@ -73,9 +73,9 @@ public class BarricadeTest {
     public void testVakEigenschap_Speler() {
         System.out.println("vakEigenschap");
         Speler speler = new Speler(10,10);
-        speler.setZak(200); //comment dit en zet expResult false voor andere correcte werking of verander waarde en zet result false om andere pop-up bericht te testen.
+        speler.setZak(0); //comment dit en zet expResult false voor andere correcte werking of verander waarde en zet result false om andere pop-up bericht te testen.
         Barricade instance = new Barricade(10,20,200); //geef barricade x,y en waarde van barricade
-        boolean expResult = true;
+        boolean expResult = false;
         boolean result = instance.vakEigenschap(speler);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
