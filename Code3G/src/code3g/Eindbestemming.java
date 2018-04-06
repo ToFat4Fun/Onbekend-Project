@@ -36,8 +36,4 @@ public class Eindbestemming extends Eigenschap implements Melding {
         JOptionPane.showMessageDialog(venster,"Je hebt gewonnen!");
         // binnenkort uitbreiden
     }
-
-    public void meldingTonen() {
-        //...
-    }
 }

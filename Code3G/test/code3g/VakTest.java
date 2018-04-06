@@ -93,17 +93,6 @@ public class VakTest {
    
     }
 
-    /**
-     * Test of emptyEigenschap method, of class Vak.
-     */
-    @Test
-    public void testEmptyEigenschap() {
-        System.out.println("emptyEigenschap");
-        Vak instance = null;
-        instance.emptyEigenschap();
-        // TODO review the generated test code and remove the default call to fail.
-        
-    }
 
     /**
      * Test of requestVakEigenschap method, of class Vak.

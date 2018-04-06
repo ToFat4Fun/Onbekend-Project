@@ -23,6 +23,10 @@ public class Vak {
     {
         this.kleur = gekozenKleur;
     }
+    public void emptyVakken()
+    {
+     eigenschap = null;   
+    }
 
     public void setKleur(String gekozenKleur) {
         this.kleur = kleur;
@@ -52,7 +56,7 @@ public class Vak {
             // alleen bij barricade en sleutel een instanceof gebruiken. omdat deze twee andere operatie heeft
             if (eigenschap.vakEigenschap(speler)) {
                 //natuurlijk een object leeggooien
-                eigenschap = null;
+               emptyVakken();
                 return true; // vakeigenschap van barricade aanroepen 
                 
             } else {

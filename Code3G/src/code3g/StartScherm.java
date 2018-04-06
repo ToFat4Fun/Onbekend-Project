@@ -36,7 +36,6 @@ public class StartScherm extends JFrame {
     };
 
     private int gekozenMoeilijkheidsgraad = 1;
-    private int onthoudRestartMap;
     private JFrame f;
     private JButton[] speelveldButton = new JButton[]{
         new JButton("Herstart random level"),
@@ -48,6 +47,7 @@ public class StartScherm extends JFrame {
     public enum MoeilijkheidsGraad { // bron: https://stackoverflow.com/questions/3978654/best-way-to-create-enum-of-strings
         makkelijk, normaal, moeilijk
     } // moeilijkheidsGraad in enum datatype.
+
 
     public StartScherm(Speelveld speelveld) {
 
@@ -121,6 +121,7 @@ public class StartScherm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent event) {
                 f.dispose();// huidige jframe weggooien
+                eigenschappen.removeAll(eigenschappen);
                 maakMap();// maak nieuwe map aan
                 speelveld = new Speelveld(); // nieuwe speelveld aanmaken
                 maakSpeelveldAan(); // speelveld aan jframe toevoegen
@@ -149,22 +150,25 @@ public class StartScherm extends JFrame {
         speelveldButton[2].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-                System.out.println(speelveldButton[1].getText() + " stoppen");
-                StartScherm scherm = new StartScherm(speelveld);
-                f.dispose();
-
-                scherm.setTitle("BarricadeSleutel spel groep 3.5.7 2018");// naam van het scherm
-                scherm.setSize(500, 400);// breedte en hoogte instellen
-                scherm.setLocationRelativeTo(null);
-                scherm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// zet scherm afsluiten als een standaard
-                scherm.setVisible(true);
-                //System.exit(0);
+                heropenStartscherm();
             }
         }
         );
 
         maakMap();
         maakSpeelveldAan();
+    }
+
+    public void heropenStartscherm() {
+        System.out.println(speelveldButton[1].getText() + " stoppen");
+        StartScherm scherm = new StartScherm(speelveld);
+        f.dispose();
+
+        scherm.setTitle("BarricadeSleutel spel groep 3.5.7 2018");// naam van het scherm
+        scherm.setSize(500, 400);// breedte en hoogte instellen
+        scherm.setLocationRelativeTo(null);
+        scherm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// zet scherm afsluiten als een standaard
+        scherm.setVisible(true);
     }
 
     public void maakMap() {
@@ -199,13 +203,15 @@ public class StartScherm extends JFrame {
         int[][] moeilijkeMap3;
         int[][] moeilijkeMapNummer3;
 
+        //random na leegmaken.
+        int[][] randomMap = null;
+        int[][] randomMapNummer = null;
         //random array[][] aanmaken
-        int[][] randomMap = new int[10][10];
-        int[][] randomMapNummer = new int[10][10];
+        randomMap = new int[10][10];
+        randomMapNummer = new int[10][10];
 
         Random random = new Random();
         int generatedRandomNumber = random.nextInt(3) + 1;
-        onthoudRestartMap = generatedRandomNumber;
 
         /*
         eigenschappen:
@@ -214,6 +220,7 @@ public class StartScherm extends JFrame {
         nummer 2 is een barricade
         nummer 3 is sleutelvak
         nummer 4 is eindbestemming
+        nummer 5 is dood/dode vak
          */
         //eerste makkelijke map
         if (gekozenMoeilijkheidsgraad == 1) {
@@ -226,7 +233,7 @@ public class StartScherm extends JFrame {
                 {0, 2, 2, 0, 0, 0, 1, 2, 2, 0},
                 {0, 1, 2, 1, 1, 2, 1, 1, 0, 0},
                 {0, 1, 2, 2, 2, 2, 0, 0, 0, 0},
-                {3, 1, 2, 2, 0, 0, 0, 1, 0, 0},
+                {3, 1, 2, 2, 0, 0, 0, 1, 0, 5},
                 {0, 1, 2, 2, 0, 0, 0, 1, 0, 4}
             };
 
@@ -255,7 +262,7 @@ public class StartScherm extends JFrame {
                 {0, 1, 0, 0, 1, 1, 0, 2, 2, 0},
                 {2, 1, 1, 1, 0, 3, 2, 2, 2, 2},
                 {0, 0, 1, 1, 1, 1, 1, 1, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 4}
+                {0, 0, 0, 0, 0, 0, 0, 0, 5, 4}
             };
 
             makkelijkMapNummer2 = new int[][]{
@@ -268,7 +275,8 @@ public class StartScherm extends JFrame {
                 {0, 0, 0, 0, 0, 0, 0, 200, 200, 0,},
                 {200, 0, 0, 0, 0, 200, 200, 200, 200, 200,},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,},};
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,}
+            };
 
             //derde makkelijke map
             makkelijkMap3 = new int[][]{
@@ -296,33 +304,18 @@ public class StartScherm extends JFrame {
                 {700, 800, 800, 0, 0, 0, 0, 0, 900, 0},
                 {700, 800, 0, 0, 0, 0, 0, 0, 0, 0}
             };
-            if (onthoudRestartMap < 4)// nummer 4 bestaat niet. 
-            {
-                if (onthoudRestartMap == 1) {
-                    randomMap = makkelijkMap1;
-                    randomMapNummer = makkelijkMapNummer1;
 
-                } else if (onthoudRestartMap == 2) {
-                    randomMap = makkelijkMap2;
-                    randomMapNummer = makkelijkMapNummer2;
+            if (generatedRandomNumber == 1) {
+                randomMap = makkelijkMap1;
+                randomMapNummer = makkelijkMapNummer1;
 
-                } else {
-                    randomMap = makkelijkMap3;
-                    randomMapNummer = makkelijkMapNummer3;
-                }
+            } else if (generatedRandomNumber == 2) {
+                randomMap = makkelijkMap2;
+                randomMapNummer = makkelijkMapNummer2;
+
             } else {
-                if (generatedRandomNumber == 1) {
-                    randomMap = makkelijkMap1;
-                    randomMapNummer = makkelijkMapNummer1;
-
-                } else if (generatedRandomNumber == 2) {
-                    randomMap = makkelijkMap2;
-                    randomMapNummer = makkelijkMapNummer2;
-
-                } else {
-                    randomMap = makkelijkMap3;
-                    randomMapNummer = makkelijkMapNummer3;
-                }
+                randomMap = makkelijkMap3;
+                randomMapNummer = makkelijkMapNummer3;
             }
         } else if (gekozenMoeilijkheidsgraad == 2) {
             normaleMap1 = new int[][]{
@@ -426,7 +419,7 @@ public class StartScherm extends JFrame {
                 {1, 2, 2, 2, 2, 2, 1, 1, 3, 1},
                 {3, 0, 1, 1, 0, 1, 1, 1, 1, 1},
                 {1, 0, 3, 1, 2, 0, 0, 2, 1, 1},
-                {3, 1 ,1, 1, 3, 1, 1, 2, 2, 2},
+                {3, 1, 1, 1, 3, 1, 1, 2, 2, 2},
                 {2, 2, 2, 2, 2, 2, 2, 2, 2, 4}
             };
 
@@ -469,7 +462,6 @@ public class StartScherm extends JFrame {
                 {1, 1, 1, 1, 1, 1, 1, 1, 200, 4}
             };
 
-
             moeilijkeMap3 = new int[][]{
                 {0, 2, 1, 1, 1, 1, 1, 1, 1, 1},
                 {3, 3, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -508,27 +500,27 @@ public class StartScherm extends JFrame {
                 randomMapNummer = moeilijkeMapNummer3;
             }
         }
+        System.out.println("--------------------------------------------------------------");
         //onderstaande code vergelijkt waarde uit gemaakte speelveld en bepaald het type eigenschap..
         for (int i = 0; i < randomMap.length; i++) {
             for (int j = 0; j < randomMap[i].length; j++) {
-
+                System.out.print(randomMap[i][j]);
                 if (randomMap[i][j] == 1) {
                     eigenschappen.add(new Muur(i, j));
-                }
-
-                if (randomMap[i][j] == 2) {
+                } else if (randomMap[i][j] == 2) {
                     //  System.out.println(map[i][j]);
                     eigenschappen.add(new Barricade(i, j, randomMapNummer[i][j]));
-                }
-
-                if (randomMap[i][j] == 3) {
+                } else if (randomMap[i][j] == 3) {
                     eigenschappen.add(new Sleutel(i, j, randomMapNummer[i][j]));
+                } else if (randomMap[i][j] == 4) {
+                    eigenschappen.add(new Eindbestemming(i, j));
+                } else if (randomMap[i][j] == 5) {
+                    eigenschappen.add(new Dood(i, j, this));
                 }
 
-                if (randomMap[i][j] == 4) {
-                    eigenschappen.add(new Eindbestemming(i, j));
-                }
             }
+
+            System.out.println();
         }
     }
 
@@ -551,7 +543,7 @@ public class StartScherm extends JFrame {
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// zet scherm afsluiten als een standaard
         f.setVisible(true);//open het applicatie/scherm.
 
-        speelveld.createVakken();
+        //speelveld.createVakken();
         speelveld.addEigenschap(eigenschappen); //geeft eigenschap door als parameter aan eigenschappen zodat vak weet welke type eigenschap het is
         speelveld.setVisible(true);//open het applicatie/scherm.  
     }

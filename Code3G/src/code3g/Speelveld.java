@@ -34,7 +34,7 @@ public class Speelveld extends JComponent implements ActionListener, KeyListener
     public Speelveld() {
         vak = new Vak[10][10]; // heeft 100 vakken. 
         speler = new Speler(0, 0); // startpositie 0,0
-
+        createVakken();
         addKeyListener(this);// toetsenbord aan KeyListener koppelen
         setFocusable(true);// deze window/applicatie focusen om keyboard werkend te krijgen.
         timer = new Timer(50, this); // delay this classe voor 50 milieseconden. net als bij Arduino. maar dit heeft te maken met ActionListener
