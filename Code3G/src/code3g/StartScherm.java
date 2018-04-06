@@ -300,28 +300,28 @@ public class StartScherm extends JFrame {
             {
                 if (onthoudRestartMap == 1) {
                     randomMap = makkelijkMap1;
-                    randomMapNummer = makkelijkMap1;
+                    randomMapNummer = makkelijkMapNummer1;
 
                 } else if (onthoudRestartMap == 2) {
                     randomMap = makkelijkMap2;
-                    randomMapNummer = makkelijkMap2;
+                    randomMapNummer = makkelijkMapNummer2;
 
                 } else {
                     randomMap = makkelijkMap3;
-                    randomMapNummer = makkelijkMap3;
+                    randomMapNummer = makkelijkMapNummer3;
                 }
             } else {
                 if (generatedRandomNumber == 1) {
                     randomMap = makkelijkMap1;
-                    randomMapNummer = makkelijkMap1;
+                    randomMapNummer = makkelijkMapNummer1;
 
                 } else if (generatedRandomNumber == 2) {
                     randomMap = makkelijkMap2;
-                    randomMapNummer = makkelijkMap2;
+                    randomMapNummer = makkelijkMapNummer2;
 
                 } else {
                     randomMap = makkelijkMap3;
-                    randomMapNummer = makkelijkMap3;
+                    randomMapNummer = makkelijkMapNummer3;
                 }
             }
         } else if (gekozenMoeilijkheidsgraad == 2) {
@@ -418,29 +418,29 @@ public class StartScherm extends JFrame {
         } else if (gekozenMoeilijkheidsgraad == 3) {
 
             moeilijkeMap1 = new int[][]{
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 4}
+                {0, 3, 1, 1, 1, 1, 1, 1, 1, 0},
+                {3, 2, 3, 2, 2, 3, 0, 2, 2, 2},
+                {1, 1, 1, 1, 1, 1, 1, 2, 2, 2},
+                {0, 0, 1, 1, 2, 0, 0, 0, 0, 2},
+                {1, 1, 3, 1, 1, 0, 1, 1, 2, 2},
+                {0, 2, 2, 2, 2, 2, 1, 1, 3, 0},
+                {3, 0, 1, 1, 0, 1, 0, 1, 1, 1},
+                {1, 0, 3, 1, 2, 0, 0, 2, 1, 1},
+                {3, 1 ,1, 1, 3, 1, 1, 2, 2, 2},
+                {2, 2, 2, 2, 2, 2, 2, 2, 2, 4}
             };
 
             moeilijkeMapNummer1 = new int[][]{
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+                {0, 700, 0, 0, 0, 0, 0, 0, 0, 0},
+                {20, 20, 30, 30, 30, 100, 0, 100, 100, 100},
+                {0, 0, 0, 0, 0, 0, 0, 500, 500, 100},
+                {0, 0, 0, 0, 500, 0, 0, 0, 0, 100},
+                {0, 0, 600, 700, 0, 0, 0, 0, 100, 100},
+                {0, 200, 200, 200, 200, 200, 0, 0, 200, 0},
+                {500, 0, 0, 0, 0, 0, 800, 0, 0, 0},
+                {0, 0, 300, 0, 300, 0, 0, 500, 0, 0},
+                {800, 0, 0, 0, 400, 0, 0, 500, 500, 700},
+                {400, 400, 400, 400, 400, 400, 400, 600, 800}
             };
 
             moeilijkeMap2 = new int[][]{
