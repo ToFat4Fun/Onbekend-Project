@@ -73,7 +73,7 @@ public class BarricadeTest {
     public void testVakEigenschap_Speler() {
         System.out.println("vakEigenschap");
         Speler speler = new Speler(10,10);
-        speler.setZak(200); //comment dit en det expResult false voor andere correcte werking of verander waarde en zet result false om andere pop-up bericht te testen.
+        speler.setZak(200); //comment dit en zet expResult false voor andere correcte werking of verander waarde en zet result false om andere pop-up bericht te testen.
         Barricade instance = new Barricade(10,20,200); //geef barricade x,y en waarde van barricade
         boolean expResult = true;
         boolean result = instance.vakEigenschap(speler);
@@ -88,7 +88,7 @@ public class BarricadeTest {
     //kijkt alleen of speler op dit type vak mag lopen, zie methode hierboven voor uitbreiding.
     @Test
     public void testVakEigenschap_0args() {
-        System.out.println("vakEigenschap");
+        System.out.println("vakEigenschap 0 args");
         Barricade instance = new Barricade(30,30, 300);
         boolean expResult = false;
         boolean result = instance.vakEigenschap();
