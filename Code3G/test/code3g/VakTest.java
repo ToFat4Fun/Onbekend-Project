@@ -45,7 +45,7 @@ public class VakTest {
     public void testSetKleur() {
         System.out.println("setKleur");
         String gekozenKleur = "";
-        Vak instance = null;
+        Vak instance = new Vak("#FFFFFFF");
         instance.setKleur(gekozenKleur);
         // TODO review the generated test code and remove the default call to fail.
         
@@ -57,8 +57,8 @@ public class VakTest {
     @Test
     public void testGetKleur() {
         System.out.println("getKleur");
-        Vak instance = null;
-        String expResult = "";
+        Vak instance = new Vak("#FFFFFFF");
+        String expResult = "#FFFFFFF";
         String result = instance.getKleur();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
@@ -71,8 +71,9 @@ public class VakTest {
     @Test
     public void testGetEigenschap() {
         System.out.println("getEigenschap");
-        Vak instance = null;
-        Eigenschap expResult = null;
+        Vak instance = new Vak("#FFFFFFF");
+        Eigenschap eigenschap= new Eigenschap( "muur.png", 3,4);
+        Eigenschap expResult = eigenschap;
         Eigenschap result = instance.getEigenschap();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
