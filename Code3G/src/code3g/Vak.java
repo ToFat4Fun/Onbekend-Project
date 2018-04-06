@@ -40,10 +40,11 @@ public class Vak {
         this.eigenschap = e;
     }
 
-    //maak vak leeg..
-    public void emptyEigenschap() {
+    //maak vak leeg..  legacy methode, niet meer nodig en niet in diagram opgenomen..
+   /* public void emptyEigenschap() {
         eigenschap = null;
     }
+*/
     //deze methode controleert of speler op een vak mag lopen
     public boolean requestVakEigenschap(Speler speler) {
 
