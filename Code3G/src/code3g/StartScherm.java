@@ -39,7 +39,7 @@ public class StartScherm extends JFrame {
     private int onthoudRestartMap;
     private JFrame f;
     private JButton[] speelveldButton = new JButton[]{
-        new JButton("herstart random level"),
+        new JButton("Herstart random level"),
         new JButton("Restart dit level"),
         new JButton("Terug naar startscherm")
     };
