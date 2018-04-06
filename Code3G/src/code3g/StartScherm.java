@@ -500,11 +500,9 @@ public class StartScherm extends JFrame {
                 randomMapNummer = moeilijkeMapNummer3;
             }
         }
-        System.out.println("--------------------------------------------------------------");
         //onderstaande code vergelijkt waarde uit gemaakte speelveld en bepaald het type eigenschap..
         for (int i = 0; i < randomMap.length; i++) {
             for (int j = 0; j < randomMap[i].length; j++) {
-                System.out.print(randomMap[i][j]);
                 if (randomMap[i][j] == 1) {
                     eigenschappen.add(new Muur(i, j));
                 } else if (randomMap[i][j] == 2) {
@@ -520,7 +518,6 @@ public class StartScherm extends JFrame {
 
             }
 
-            System.out.println();
         }
     }
 
